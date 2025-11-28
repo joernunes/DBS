@@ -9,7 +9,40 @@ function App() {
   const [activeStudy, setActiveStudy] = useState<Scripture | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
-  const [language, setLanguage] = useState<Language>('pt');
+  
+  // Initialize language from localStorage or default to 'pt'
+  const [language, setLanguageState] = useState<Language>(() => {
+    const saved = localStorage.getItem('dbs_language');
+    return (saved === 'pt' || saved === 'en' || saved === 'fr') ? saved : 'pt';
+  });
+
+  // Initialize completed studies from localStorage
+  const [completedStudies, setCompletedStudies] = useState<string[]>(() => {
+    try {
+        const saved = localStorage.getItem('dbs_completed_studies');
+        return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+        return [];
+    }
+  });
+
+  // Custom setter for language to sync with localStorage
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    localStorage.setItem('dbs_language', lang);
+  };
+
+  const toggleStudyCompletion = (reference: string) => {
+    setCompletedStudies(prev => {
+        const isCompleted = prev.includes(reference);
+        const newCompleted = isCompleted 
+            ? prev.filter(ref => ref !== reference)
+            : [...prev, reference];
+        
+        localStorage.setItem('dbs_completed_studies', JSON.stringify(newCompleted));
+        return newCompleted;
+    });
+  };
 
   // Manipular o botão "Voltar" do navegador (History API)
   useEffect(() => {
@@ -70,6 +103,8 @@ function App() {
         onBack={handleBack} 
         language={language}
         setLanguage={setLanguage}
+        isCompleted={completedStudies.includes(activeStudy.reference)}
+        onToggleCompletion={() => toggleStudyCompletion(activeStudy.reference)}
       />
     );
   }
@@ -92,6 +127,7 @@ function App() {
           onOpenGuide={handleOpenGuide}
           language={language}
           setLanguage={setLanguage}
+          completedStudies={completedStudies}
         />
       </main>
     </div>

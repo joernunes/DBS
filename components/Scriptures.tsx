@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { SCRIPTURES_LIST, HOME_UI } from '../constants';
-import { IconBookOpen, IconArrowRight, IconDownload } from './Icons';
+import { IconBookOpen, IconArrowRight, IconDownload, IconCheckCircle } from './Icons';
 import { Scripture, Language } from '../types';
 
 interface ScripturesProps {
@@ -8,26 +8,22 @@ interface ScripturesProps {
   onOpenGuide?: () => void;
   language: Language;
   setLanguage: (lang: Language) => void;
+  completedStudies: string[];
 }
 
-const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, language, setLanguage }) => {
+const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, language, setLanguage, completedStudies }) => {
   const ui = HOME_UI[language];
   
   const handleStudyClick = (index: number) => {
-    // Check if it is study #7 or #8 (Indices 6 and 7)
-    if (index === 6 || index === 7) {
-      // Use the localized title but keep the reference
-      const item = SCRIPTURES_LIST[index];
-      const localizedItem = item[language];
-      
-      onOpenStudy({
-        title: localizedItem.title,
-        reference: item.reference,
-        theme: localizedItem.theme
-      });
-    } else {
-       alert(ui.comingSoon);
-    }
+    // Open ANY study now. Content logic is handled in StudyPage.
+    const item = SCRIPTURES_LIST[index];
+    const localizedItem = item[language];
+    
+    onOpenStudy({
+      title: localizedItem.title,
+      reference: item.reference,
+      theme: localizedItem.theme
+    });
   };
 
   return (
@@ -92,38 +88,33 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
           <div className="space-y-3">
             {SCRIPTURES_LIST.map((item, index) => {
               const localizedItem = item[language];
+              const isCompleted = completedStudies.includes(item.reference);
+              
               return (
                 <div 
                   key={index} 
                   onClick={() => handleStudyClick(index)}
-                  className={`flex flex-col sm:flex-row sm:items-center justify-between p-5 rounded-xl border transition-all duration-200 group relative
-                    ${(index === 6 || index === 7)
-                      ? 'bg-white border-teal-200 cursor-pointer shadow-sm hover:shadow-md hover:border-teal-400 hover:-translate-y-0.5' 
-                      : 'bg-gray-50 border-gray-100 opacity-70 hover:opacity-100 cursor-pointer'
-                    }`}
+                  className={`flex flex-col sm:flex-row sm:items-center justify-between p-5 rounded-xl border transition-all duration-200 group relative cursor-pointer shadow-sm hover:shadow-md hover:border-teal-400 hover:-translate-y-0.5 bg-white border-teal-100`}
                 >
                   <div className="flex items-center gap-5">
-                    <span className={`flex-shrink-0 w-10 h-10 flex items-center justify-center font-bold rounded-full text-lg
-                      ${(index === 6 || index === 7) ? 'bg-teal-600 text-white shadow-sm' : 'bg-gray-200 text-gray-500'}`}>
-                      {index + 1}
-                    </span>
+                    <div className="relative">
+                        <span className={`flex-shrink-0 w-10 h-10 flex items-center justify-center font-bold rounded-full text-lg transition-colors
+                        ${isCompleted ? 'bg-teal-500 text-white' : 'bg-teal-100 text-teal-800'}`}>
+                        {isCompleted ? <IconCheckCircle className="w-6 h-6" /> : index + 1}
+                        </span>
+                    </div>
+                    
                     <div>
-                      <h4 className={`text-lg font-bold group-hover:text-teal-700 transition-colors flex items-center gap-2 ${(index === 6 || index === 7) ? 'text-gray-900' : 'text-gray-600'}`}>
+                      <h4 className={`text-lg font-bold group-hover:text-teal-700 transition-colors flex items-center gap-2 text-gray-900 ${isCompleted ? 'line-through text-gray-400 group-hover:text-teal-700 group-hover:no-underline' : ''}`}>
                         {localizedItem.title}
                       </h4>
                       <span className="text-sm text-gray-500 uppercase tracking-wide font-medium">{localizedItem.theme}</span>
                     </div>
                   </div>
                   <div className="mt-3 sm:mt-0 pl-14 sm:pl-0 flex items-center gap-2 text-sm font-medium">
-                    {(index === 6 || index === 7) ? (
                        <span className="flex items-center text-teal-600 bg-teal-50 px-3 py-1 rounded-full">
                          {item.reference} <IconArrowRight className="w-4 h-4 ml-2" />
                        </span>
-                    ) : (
-                      <span className="text-gray-400 flex items-center">
-                          {item.reference}
-                      </span>
-                    )}
                   </div>
                 </div>
               );

@@ -1,4 +1,4 @@
-import { FAQItem, MultilingualStudyContent, MultilingualScriptureItem, HomeContent } from './types';
+import { FAQItem, MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions } from './types';
 
 // Used for legacy navigation if needed, but keeping for type safety
 export const NAV_LINKS = [
@@ -15,21 +15,72 @@ export const HOME_UI: Record<string, HomeContent> = {
     subtitle: "Um guia prático para ler a Bíblia e descobrir a verdade em comunidade.",
     facilitatorBtn: "Guia do Facilitador",
     pathLabel: "Caminho de Descoberta",
-    comingSoon: "O conteúdo completo deste estudo estará disponível em breve. Tente os estudos #7 ou #8 para ver o modelo completo."
+    comingSoon: "Em breve"
   },
   en: {
     title: "DBS",
     subtitle: "A practical guide to reading the Bible and discovering truth in community.",
     facilitatorBtn: "Facilitator Guide",
     pathLabel: "Discovery Path",
-    comingSoon: "Full content for this study will be available soon. Try studies #7 or #8 to see the full model."
+    comingSoon: "Coming soon"
   },
   fr: {
     title: "DBS",
     subtitle: "Un guide pratique pour lire la Bible et découvrir la vérité en communauté.",
     facilitatorBtn: "Guide du Facilitateur",
     pathLabel: "Parcours de Découverte",
-    comingSoon: "Le contenu complet de cette étude sera bientôt disponible. Essayez les études #7 ou #8 pour voir le modèle complet."
+    comingSoon: "Bientôt disponible"
+  }
+};
+
+export const GENERIC_QUESTIONS: Record<string, GenericQuestions> = {
+  pt: {
+    god: [
+      "O que este texto diz sobre Deus?",
+      "Quais atributos de Deus vemos aqui (Amor, Justiça, Poder)?",
+      "O que Ele faz ou diz no texto?"
+    ],
+    people: [
+      "O que aprendemos sobre as pessoas?",
+      "Há algum exemplo a seguir ou erro a evitar?",
+      "O que o texto revela sobre a natureza humana?"
+    ],
+    obedience: {
+      example: "Baseado neste texto, o que eu vou fazer esta semana?",
+      share: "Com quem eu vou compartilhar essa história?"
+    }
+  },
+  en: {
+    god: [
+      "What does this text say about God?",
+      "What attributes of God do we see here (Love, Justice, Power)?",
+      "What does He do or say in the text?"
+    ],
+    people: [
+      "What do we learn about people?",
+      "Is there an example to follow or a mistake to avoid?",
+      "What does the text reveal about human nature?"
+    ],
+    obedience: {
+      example: "Based on this text, what will I do this week?",
+      share: "Who will I share this story with?"
+    }
+  },
+  fr: {
+    god: [
+      "Que dit ce texte sur Dieu ?",
+      "Quels attributs de Dieu voyons-nous ici (Amour, Justice, Puissance) ?",
+      "Que fait-Il ou que dit-Il dans le texte ?"
+    ],
+    people: [
+      "Qu'apprenons-nous sur les gens ?",
+      "Y a-t-il un exemple à suivre ou une erreur à éviter ?",
+      "Qu'est-ce que le texte révèle sur la nature humaine ?"
+    ],
+    obedience: {
+      example: "Sur la base de ce texte, que ferai-je cette semaine ?",
+      share: "Avec qui partagerai-je cette histoire ?"
+    }
   }
 };
 

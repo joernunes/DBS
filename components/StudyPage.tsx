@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { IconArrowLeft, IconPrinter } from './Icons';
+import { IconArrowLeft, IconPrinter, IconCheckCircle, IconBookOpen } from './Icons';
 import { LocalizedStudyContent, Language } from '../types';
-import { STUDY_CONTENTS } from '../constants';
+import { STUDY_CONTENTS, GENERIC_QUESTIONS } from '../constants';
 
 interface StudyPageProps {
   study: { title: string; reference: string }; 
   onBack: () => void;
   language: Language;
   setLanguage: (lang: Language) => void;
+  isCompleted: boolean;
+  onToggleCompletion: () => void;
 }
 
 const UI_LABELS = {
@@ -25,7 +27,11 @@ const UI_LABELS = {
     shareTitle: "Compartilhar",
     shareDesc: "Com quem vou compartilhar essa história?",
     footer: "DBS — Discípulos Fazendo Discípulos",
-    footerDesc: "Texto bíblico para fins de estudo e descoberta em comunidade."
+    footerDesc: "Texto bíblico para fins de estudo e descoberta em comunidade.",
+    openBible: "Abra sua Bíblia em",
+    readInBible: "Este texto ainda não está disponível no app. Por favor, leia diretamente na sua Bíblia e use as perguntas abaixo para guiar o estudo.",
+    markComplete: "Marcar como Concluído",
+    completed: "Estudo Concluído"
   },
   en: {
     back: "Back",
@@ -40,7 +46,11 @@ const UI_LABELS = {
     shareTitle: "Share",
     shareDesc: "Who am I going to share this story with?",
     footer: "DBS — Disciples Making Disciples",
-    footerDesc: "Bible text for study and discovery in community."
+    footerDesc: "Bible text for study and discovery in community.",
+    openBible: "Open your Bible to",
+    readInBible: "This text is not yet available in the app. Please read directly from your Bible and use the questions below to guide the study.",
+    markComplete: "Mark as Complete",
+    completed: "Study Completed"
   },
   fr: {
     back: "Retour",
@@ -55,33 +65,49 @@ const UI_LABELS = {
     shareTitle: "Partager",
     shareDesc: "Avec qui vais-je partager cette histoire ?",
     footer: "DBS — Disciples Faisant des Disciples",
-    footerDesc: "Texte biblique pour l'étude et la découverte en communauté."
+    footerDesc: "Texte biblique pour l'étude et la découverte en communauté.",
+    openBible: "Ouvrez votre Bible à",
+    readInBible: "Ce texte n'est pas encore disponible dans l'application. Veuillez lire directement dans votre Bible et utiliser les questions ci-dessous pour guider l'étude.",
+    markComplete: "Marquer comme Terminé",
+    completed: "Étude Terminée"
   }
 };
 
-const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage }) => {
+const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage, isCompleted, onToggleCompletion }) => {
   
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Get multilingual content
-  const multiContent = STUDY_CONTENTS[study.reference];
-
-  // Default fallback if study not found
-  const defaultContent: LocalizedStudyContent = {
-    title: study.title,
-    bibleText: [],
-    quadrants: { god: [], people: [], obedience: { example: "", share: "" } }
-  };
-
-  // Get specific language content or fallback
-  const content = multiContent ? multiContent[language] : defaultContent;
+  // Labels
   const labels = UI_LABELS[language];
+  const genericQs = GENERIC_QUESTIONS[language];
+
+  // Logic to determine content
+  const multiContent = STUDY_CONTENTS[study.reference];
+  
+  let content: LocalizedStudyContent;
+  
+  if (multiContent) {
+    // Specific content exists
+    content = multiContent[language];
+  } else {
+    // FALLBACK: Use Generic Questions
+    content = {
+      title: study.title,
+      bibleText: [], // Empty indicates generic mode
+      isGeneric: true,
+      quadrants: {
+        god: genericQs.god,
+        people: genericQs.people,
+        obedience: genericQs.obedience
+      }
+    };
+  }
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900">
+    <div className="min-h-screen bg-white font-sans text-gray-900 pb-20">
       
       {/* Navigation Bar - Sticky Top */}
       <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100 p-4 sticky top-0 z-50 flex justify-between items-center print:hidden">
@@ -132,7 +158,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
       <main className="w-full">
         
         {/* Header Section */}
-        <header className="py-16 md:py-24 px-6 text-center border-b border-gray-100 bg-gray-50/50">
+        <header className="py-12 md:py-20 px-6 text-center border-b border-gray-100 bg-gray-50/50">
           <div className="max-w-4xl mx-auto">
             <span className="inline-block py-1.5 px-4 border border-gray-300 rounded-full text-xs font-bold uppercase tracking-widest text-gray-500 mb-6">
               {labels.studyLabel}
@@ -151,6 +177,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
             <div className="max-w-3xl mx-auto">
                 <div className="font-serif text-xl md:text-2xl leading-loose text-gray-800 antialiased space-y-8">
                   {content.bibleText.length > 0 ? (
+                    // RENDER FULL TEXT
                     content.bibleText.map((paragraph, index) => (
                       <p key={index}>
                         {paragraph.verses.map((verse, vIndex) => (
@@ -164,7 +191,16 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                       </p>
                     ))
                   ) : (
-                    <p className="text-center text-gray-400 italic">Texto bíblico não carregado para este estudo.</p>
+                    // RENDER GENERIC INSTRUCTION
+                    <div className="text-center p-8 border-2 border-dashed border-gray-200 rounded-2xl bg-gray-50">
+                        <IconBookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                        <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                            {labels.openBible}: <span className="text-teal-600 underline">{study.reference}</span>
+                        </h3>
+                        <p className="text-gray-500 italic max-w-lg mx-auto">
+                            {labels.readInBible}
+                        </p>
+                    </div>
                   )}
                 </div>
             </div>
@@ -185,7 +221,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                     <ul className="space-y-6 text-lg md:text-xl font-medium text-gray-700">
                         {content.quadrants.god.map((item, i) => (
                           <li key={i} className="flex gap-4 items-start group">
-                              <span className="text-teal-400 mt-2 text-xs">●</span>
+                              <span className="text-teal-500 mt-1 font-bold">?</span>
                               <span>{item}</span>
                           </li>
                         ))}
@@ -205,7 +241,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                     <ul className="space-y-6 text-lg md:text-xl font-medium text-gray-700">
                         {content.quadrants.people.map((item, i) => (
                           <li key={i} className="flex gap-4 items-start group">
-                              <span className="text-sky-400 mt-2 text-xs">●</span>
+                              <span className="text-sky-500 mt-1 font-bold">?</span>
                               <span>{item}</span>
                           </li>
                         ))}
@@ -223,9 +259,15 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                     </p>
                     
                     <div className="bg-white p-8 rounded-xl shadow-sm border border-orange-100">
-                        <p className="font-serif text-2xl leading-relaxed italic text-gray-700">
-                            "{content.quadrants.obedience.example}"
-                        </p>
+                         {content.isGeneric ? (
+                            <p className="font-serif text-lg leading-relaxed text-gray-700">
+                                {content.quadrants.obedience.example}
+                            </p>
+                         ) : (
+                            <p className="font-serif text-2xl leading-relaxed italic text-gray-700">
+                                "{content.quadrants.obedience.example}"
+                            </p>
+                         )}
                     </div>
                 </div>
             </div>
@@ -240,17 +282,34 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                     </p>
                     
                      <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-                        <p className="font-serif text-2xl leading-relaxed italic text-gray-700">
-                            "{content.quadrants.obedience.share}"
-                        </p>
+                        {content.isGeneric ? (
+                             <p className="font-serif text-lg leading-relaxed text-gray-700">
+                                {content.quadrants.obedience.share}
+                             </p>
+                        ) : (
+                             <p className="font-serif text-2xl leading-relaxed italic text-gray-700">
+                                "{content.quadrants.obedience.share}"
+                            </p>
+                        )}
                     </div>
                 </div>
             </div>
 
         </section>
 
+        {/* Completion Action */}
+        <div className="fixed bottom-0 left-0 w-full p-4 bg-white border-t border-gray-200 flex justify-center print:hidden z-40 shadow-lg">
+             <button 
+                onClick={onToggleCompletion}
+                className={`flex items-center gap-3 px-8 py-3 rounded-full font-bold shadow-sm transition-all transform active:scale-95 ${isCompleted ? 'bg-teal-100 text-teal-800 border-2 border-teal-200' : 'bg-gray-900 text-white hover:bg-gray-800'}`}
+             >
+                <IconCheckCircle className={`w-6 h-6 ${isCompleted ? 'text-teal-600' : 'text-gray-400'}`} />
+                {isCompleted ? labels.completed : labels.markComplete}
+             </button>
+        </div>
+
         {/* Footer */}
-        <footer className="bg-gray-50 text-gray-500 py-16 px-6 text-center text-sm print:hidden border-t border-gray-100">
+        <footer className="bg-gray-50 text-gray-500 py-16 px-6 text-center text-sm print:hidden border-t border-gray-100 mb-16">
             <p className="mb-3 font-semibold text-gray-400">{labels.footer}</p>
             <p className="opacity-60">{labels.footerDesc}</p>
         </footer>

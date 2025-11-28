@@ -36,8 +36,8 @@ export interface BibleParagraph {
 }
 
 export interface StudyQuadrants {
-  god: string[];
-  people: string[];
+  god: string[]; // Can be specific answers or generic questions
+  people: string[]; // Can be specific answers or generic questions
   obedience: {
     example: string;
     share: string;
@@ -46,8 +46,9 @@ export interface StudyQuadrants {
 
 export interface LocalizedStudyContent {
   title: string;
-  bibleText: BibleParagraph[];
+  bibleText: BibleParagraph[]; // Empty if generic
   quadrants: StudyQuadrants;
+  isGeneric?: boolean; // New flag
 }
 
 export interface MultilingualStudyContent {
@@ -57,7 +58,6 @@ export interface MultilingualStudyContent {
 }
 
 export interface StudyContent {
-  // Legacy support if needed, but we are moving to Multilingual
   bibleText: BibleParagraph[];
   quadrants: StudyQuadrants;
 }
@@ -80,4 +80,13 @@ export interface MultilingualScriptureItem {
   pt: LocalizedScriptureItem;
   en: LocalizedScriptureItem;
   fr: LocalizedScriptureItem;
+}
+
+export interface GenericQuestions {
+  god: string[];
+  people: string[];
+  obedience: {
+    example: string;
+    share: string;
+  }
 }
