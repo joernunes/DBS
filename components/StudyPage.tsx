@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { IconArrowLeft, IconPrinter, IconCheckCircle, IconBookOpen } from './Icons';
 import { LocalizedStudyContent, Language } from '../types';
 import { STUDY_CONTENTS, GENERIC_QUESTIONS } from '../constants';
@@ -74,11 +74,26 @@ const UI_LABELS = {
 };
 
 const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage, isCompleted, onToggleCompletion }) => {
+  const [showSuccessFlash, setShowSuccessFlash] = useState(false);
+  const [animateButton, setAnimateButton] = useState(false);
   
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Handle completion animation
+  useEffect(() => {
+    if (isCompleted) {
+        setShowSuccessFlash(true);
+        setAnimateButton(true);
+        const timer = setTimeout(() => {
+            setShowSuccessFlash(false);
+            setAnimateButton(false);
+        }, 800);
+        return () => clearTimeout(timer);
+    }
+  }, [isCompleted]);
 
   // Labels
   const labels = UI_LABELS[language];
@@ -107,8 +122,13 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
   }
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 pb-20">
+    <div className="min-h-screen bg-white font-sans text-gray-900 pb-20 relative">
       
+      {/* Success Flash Overlay */}
+      <div 
+        className={`fixed inset-0 z-[60] bg-teal-500 pointer-events-none transition-opacity duration-700 ease-out ${showSuccessFlash ? 'opacity-20' : 'opacity-0'}`} 
+      />
+
       {/* Navigation Bar - Sticky Top */}
       <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100 p-4 sticky top-0 z-50 flex justify-between items-center print:hidden">
          <div className="flex items-center gap-4">
@@ -143,7 +163,21 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
             </div>
          </div>
         
-        <div className="font-bold text-gray-900 tracking-tight text-sm md:text-base hidden md:block">DBS</div>
+        {/* Header Status / Title */}
+        <div className="flex items-center gap-3">
+            {/* Show 'Undo' button in header when completed */}
+            <div className={`transition-all duration-500 transform ${isCompleted ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'}`}>
+                 <button 
+                    onClick={onToggleCompletion}
+                    className="flex items-center gap-1.5 text-xs font-bold text-teal-600 bg-teal-50 px-3 py-1.5 rounded-full hover:bg-teal-100 border border-teal-200"
+                 >
+                    <IconCheckCircle className="w-4 h-4" />
+                    {labels.completed}
+                 </button>
+            </div>
+            
+            <div className={`font-bold text-gray-900 tracking-tight text-sm md:text-base hidden md:block transition-opacity ${isCompleted ? 'opacity-0 hidden' : 'opacity-100'}`}>DBS</div>
+        </div>
         
         <button 
           onClick={() => window.print()}
@@ -297,13 +331,16 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
 
         </section>
 
-        {/* Completion Action */}
-        <div className="fixed bottom-0 left-0 w-full p-4 bg-white border-t border-gray-200 flex justify-center print:hidden z-40 shadow-lg">
+        {/* Completion Action (Bottom Bar) */}
+        <div className={`fixed bottom-0 left-0 w-full p-4 bg-white border-t border-gray-200 flex justify-center print:hidden z-40 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] transition-transform duration-500 ease-in-out ${isCompleted ? 'translate-y-full' : 'translate-y-0'}`}>
              <button 
                 onClick={onToggleCompletion}
-                className={`flex items-center gap-3 px-8 py-3 rounded-full font-bold shadow-sm transition-all transform active:scale-95 ${isCompleted ? 'bg-teal-100 text-teal-800 border-2 border-teal-200' : 'bg-gray-900 text-white hover:bg-gray-800'}`}
+                className={`flex items-center gap-3 px-8 py-4 rounded-full font-bold shadow-lg transition-all duration-300 transform active:scale-95 text-lg
+                ${isCompleted ? 'bg-teal-500 text-white scale-105' : 'bg-gray-900 text-white hover:bg-gray-800 hover:-translate-y-1'}
+                ${animateButton ? 'scale-110 ring-4 ring-teal-200' : ''}
+                `}
              >
-                <IconCheckCircle className={`w-6 h-6 ${isCompleted ? 'text-teal-600' : 'text-gray-400'}`} />
+                <IconCheckCircle className={`w-6 h-6 transition-transform duration-500 ${isCompleted ? 'rotate-[-360deg] scale-125' : ''}`} />
                 {isCompleted ? labels.completed : labels.markComplete}
              </button>
         </div>
