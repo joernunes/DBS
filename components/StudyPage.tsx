@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { IconArrowLeft, IconPrinter } from './Icons';
-import { LocalizedStudyContent } from '../types';
+import { LocalizedStudyContent, Language } from '../types';
 import { STUDY_CONTENTS } from '../constants';
 
 interface StudyPageProps {
   study: { title: string; reference: string }; 
   onBack: () => void;
+  language: Language;
+  setLanguage: (lang: Language) => void;
 }
-
-type Language = 'pt' | 'en' | 'fr';
 
 const UI_LABELS = {
   pt: {
@@ -59,9 +59,8 @@ const UI_LABELS = {
   }
 };
 
-const StudyPage: React.FC<StudyPageProps> = ({ study, onBack }) => {
-  const [language, setLanguage] = useState<Language>('pt');
-
+const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage }) => {
+  
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);

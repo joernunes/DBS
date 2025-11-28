@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+export type Language = 'pt' | 'en' | 'fr';
+
 export interface NavItem {
   label: string;
   href: string;

@@ -3,12 +3,13 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import Scriptures from './components/Scriptures';
 import StudyPage from './components/StudyPage';
 import GuidePage from './components/GuidePage';
-import { Scripture } from './types';
+import { Scripture, Language } from './types';
 
 function App() {
   const [activeStudy, setActiveStudy] = useState<Scripture | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+  const [language, setLanguage] = useState<Language>('pt');
 
   // Manipular o botão "Voltar" do navegador (History API)
   useEffect(() => {
@@ -67,13 +68,19 @@ function App() {
       <StudyPage 
         study={activeStudy} 
         onBack={handleBack} 
+        language={language}
+        setLanguage={setLanguage}
       />
     );
   }
 
   if (isGuideOpen) {
     return (
-        <GuidePage onBack={handleBack} />
+        <GuidePage 
+          onBack={handleBack} 
+          language={language}
+          setLanguage={setLanguage}
+        />
     );
   }
 
@@ -83,6 +90,8 @@ function App() {
         <Scriptures 
           onOpenStudy={handleOpenStudy} 
           onOpenGuide={handleOpenGuide}
+          language={language}
+          setLanguage={setLanguage}
         />
       </main>
     </div>

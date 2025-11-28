@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { IconArrowLeft, IconArrowUp, IconUsers, IconCheckCircle, IconMessageCircle, IconPrinter } from './Icons';
+import { Language } from '../types';
 
 interface GuidePageProps {
   onBack: () => void;
+  language: Language;
+  setLanguage: (lang: Language) => void;
 }
-
-type Language = 'pt' | 'en' | 'fr';
 
 const TRANSLATIONS = {
   pt: {
@@ -188,9 +189,8 @@ const TRANSLATIONS = {
   }
 };
 
-const GuidePage: React.FC<GuidePageProps> = ({ onBack }) => {
-  const [language, setLanguage] = useState<Language>('pt');
-
+const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) => {
+  
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);

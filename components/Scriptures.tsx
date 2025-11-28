@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SCRIPTURES_LIST, HOME_UI } from '../constants';
 import { IconBookOpen, IconArrowRight, IconDownload } from './Icons';
-import { Scripture } from '../types';
+import { Scripture, Language } from '../types';
 
 interface ScripturesProps {
   onOpenStudy: (study: Scripture) => void;
   onOpenGuide?: () => void;
+  language: Language;
+  setLanguage: (lang: Language) => void;
 }
 
-type Language = 'pt' | 'en' | 'fr';
-
-const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide }) => {
-  const [language, setLanguage] = useState<Language>('pt');
-
+const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, language, setLanguage }) => {
   const ui = HOME_UI[language];
   
   const handleStudyClick = (index: number) => {
