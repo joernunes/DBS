@@ -94,10 +94,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack }) => {
             {/* TEAL (Green-Water) - GOD */}
             <div className="bg-teal-50 text-gray-800 p-10 md:p-20 flex flex-col justify-center border-b md:border-b-0 md:border-r border-teal-100">
                 <div className="max-w-lg mx-auto w-full">
-                    <div className="flex items-center gap-4 mb-6 opacity-60 text-teal-800">
-                        <IconArrowUp className="w-8 h-8" />
-                        <span className="text-sm font-bold uppercase tracking-widest">Olhar para Cima</span>
-                    </div>
+                  
                     <h2 className="text-4xl md:text-5xl font-black uppercase mb-4 tracking-tight text-teal-800">Sobre Deus</h2>
                     <p className="text-gray-600 text-xl font-serif italic mb-10 border-l-4 border-teal-200 pl-6 leading-relaxed">
                         O que aprendemos sobre o caráter de Deus nesta história?
@@ -117,10 +114,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack }) => {
             {/* SKY BLUE - PEOPLE */}
             <div className="bg-sky-50 text-gray-800 p-10 md:p-20 flex flex-col justify-center">
                  <div className="max-w-lg mx-auto w-full">
-                    <div className="flex items-center gap-4 mb-6 opacity-60 text-sky-800">
-                        <IconUsers className="w-8 h-8" />
-                        <span className="text-sm font-bold uppercase tracking-widest">Olhar para Cima</span>
-                    </div>
+                   
                     <h2 className="text-4xl md:text-5xl font-black uppercase mb-4 tracking-tight text-sky-800">Sobre Pessoas</h2>
                     <p className="text-gray-600 text-xl font-serif italic mb-10 border-l-4 border-sky-200 pl-6 leading-relaxed">
                         O que aprendemos sobre a natureza humana?
@@ -140,10 +134,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack }) => {
             {/* ORANGE - OBEY */}
             <div className="bg-orange-50 text-gray-800 p-10 md:p-20 flex flex-col justify-center border-b md:border-b-0 md:border-r border-orange-100">
                  <div className="max-w-lg mx-auto w-full">
-                    <div className="flex items-center gap-4 mb-6 opacity-60 text-orange-800">
-                        <IconCheckCircle className="w-8 h-8" />
-                        <span className="text-sm font-bold uppercase tracking-widest">Olhar para Frente</span>
-                    </div>
+                  
                     <h2 className="text-4xl md:text-5xl font-black uppercase mb-4 tracking-tight text-orange-800">Obediência</h2>
                     <p className="text-gray-600 text-xl font-serif italic mb-10 border-l-4 border-orange-200 pl-6 leading-relaxed">
                         Se isso é verdade, o que vai mudar na minha vida esta semana?
@@ -160,10 +151,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack }) => {
             {/* SLATE/GRAY - SHARE */}
             <div className="bg-slate-50 text-gray-800 p-10 md:p-20 flex flex-col justify-center">
                  <div className="max-w-lg mx-auto w-full">
-                    <div className="flex items-center gap-4 mb-6 opacity-60 text-slate-700">
-                        <IconMessageCircle className="w-8 h-8" />
-                        <span className="text-sm font-bold uppercase tracking-widest">Olhar para Frente</span>
-                    </div>
+                   
                     <h2 className="text-4xl md:text-5xl font-black uppercase mb-4 tracking-tight text-slate-700">Compartilhar</h2>
                     <p className="text-gray-600 text-xl font-serif italic mb-10 border-l-4 border-slate-200 pl-6 leading-relaxed">
                         Com quem vou compartilhar essa história?
