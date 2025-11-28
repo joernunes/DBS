@@ -74,7 +74,6 @@ const UI_LABELS = {
 };
 
 const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage, isCompleted, onToggleCompletion }) => {
-  const [showSuccessFlash, setShowSuccessFlash] = useState(false);
   const [animateButton, setAnimateButton] = useState(false);
   
   // Scroll to top when component mounts
@@ -82,13 +81,11 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
     window.scrollTo(0, 0);
   }, []);
 
-  // Handle completion animation
+  // Handle completion animation (button only)
   useEffect(() => {
     if (isCompleted) {
-        setShowSuccessFlash(true);
         setAnimateButton(true);
         const timer = setTimeout(() => {
-            setShowSuccessFlash(false);
             setAnimateButton(false);
         }, 800);
         return () => clearTimeout(timer);
@@ -124,11 +121,6 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 pb-10 relative">
       
-      {/* Success Flash Overlay */}
-      <div 
-        className={`fixed inset-0 z-[60] bg-teal-500 pointer-events-none transition-opacity duration-700 ease-out ${showSuccessFlash ? 'opacity-20' : 'opacity-0'}`} 
-      />
-
       {/* Navigation Bar - Sticky Top */}
       <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100 p-4 sticky top-0 z-50 flex justify-between items-center print:hidden">
          <div className="flex items-center gap-4">
