@@ -1,12 +1,9 @@
-import { FAQItem, MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions } from './types';
+import { MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions } from './types';
 
-// Used for legacy navigation if needed, but keeping for type safety
 export const NAV_LINKS = [
   { label: 'O que é', href: 'what-is' },
-  { label: 'O Método', href: 'method' },
-  { label: 'Perguntas', href: 'questions' },
-  { label: 'Textos', href: 'scriptures' },
-  { label: 'FAQ', href: 'faq' },
+  { label: 'Como Funciona', href: 'method' },
+  { label: 'Estudos', href: 'scriptures' },
 ];
 
 export const HOME_UI: Record<string, HomeContent> = {
@@ -145,25 +142,6 @@ export const SCRIPTURES_LIST: MultilingualScriptureItem[] = [
     en: { title: 'The Resurrection', theme: 'Death Defeated' },
     fr: { title: 'La Résurrection', theme: 'La Mort Vaincue' }
   },
-];
-
-export const FAQS: FAQItem[] = [
-  {
-    question: "Preciso ser um teólogo ou pastor para liderar?",
-    answer: "Não! O DBS é desenhado para ser facilitado, não ensinado. Seu papel é apenas fazer as perguntas e garantir que todos participem. O 'professor' é o Espírito Santo através do texto bíblico."
-  },
-  {
-    question: "Quanto tempo dura uma reunião?",
-    answer: "Recomendamos entre 60 a 90 minutos. Isso permite tempo suficiente para conexão (Olhar para Trás), descoberta (Olhar para Cima) e aplicação prática (Olhar para Frente)."
-  },
-  {
-    question: "Onde posso fazer o DBS?",
-    answer: "Em qualquer lugar! Casas, cafeterias, parques, intervalo do trabalho ou online. O ambiente deve ser informal e acolhedor."
-  },
-  {
-    question: "E se alguém fizer uma pergunta difícil?",
-    answer: "Ótima pergunta! Responda com honestidade: 'Essa é uma boa pergunta. Vamos ver se o texto que lemos hoje responde isso? Se não, vamos anotar e procurar a resposta na Bíblia durante a semana'."
-  }
 ];
 
 export const STUDY_CONTENTS: Record<string, MultilingualStudyContent> = {

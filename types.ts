@@ -2,28 +2,10 @@ import * as React from 'react';
 
 export type Language = 'pt' | 'en' | 'fr';
 
-export interface NavItem {
-  label: string;
-  href: string;
-}
-
 export interface Scripture {
   title: string;
   reference: string;
   theme: string;
-}
-
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export interface MethodStep {
-  title: string;
-  icon: React.ReactNode;
-  description: string;
-  subPoints: string[];
-  color: string;
 }
 
 export interface BibleVerse {
@@ -55,11 +37,6 @@ export interface MultilingualStudyContent {
   pt: LocalizedStudyContent;
   en: LocalizedStudyContent;
   fr: LocalizedStudyContent;
-}
-
-export interface StudyContent {
-  bibleText: BibleParagraph[];
-  quadrants: StudyQuadrants;
 }
 
 export interface HomeContent {
