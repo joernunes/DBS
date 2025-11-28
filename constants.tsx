@@ -1,5 +1,6 @@
-import { FAQItem, Scripture, MultilingualStudyContent } from './types';
+import { FAQItem, MultilingualStudyContent, MultilingualScriptureItem, HomeContent } from './types';
 
+// Used for legacy navigation if needed, but keeping for type safety
 export const NAV_LINKS = [
   { label: 'O que é', href: 'what-is' },
   { label: 'O Método', href: 'method' },
@@ -8,17 +9,91 @@ export const NAV_LINKS = [
   { label: 'FAQ', href: 'faq' },
 ];
 
-export const SCRIPTURES: Scripture[] = [
-  { title: 'A Criação', reference: 'Gênesis 1:1-25', theme: 'Deus Cria o Mundo' },
-  { title: 'A Criação do Homem', reference: 'Gênesis 2:4-24', theme: 'Relacionamento com Deus' },
-  { title: 'A Desobediência', reference: 'Gênesis 3:1-13', theme: 'A Queda da Humanidade' },
-  { title: 'A Promessa', reference: 'Gênesis 12:1-8', theme: 'Deus Chama Abraão' },
-  { title: 'O Sacrifício', reference: 'Gênesis 22:1-19', theme: 'Deus Proverá' },
-  { title: 'O Filho Pródigo', reference: 'Lucas 15:11-32', theme: 'O Amor do Pai' },
-  { title: 'Jesus e o Paralítico', reference: 'Marcos 2:1-12', theme: 'Jesus Tem Autoridade' },
-  { title: 'Jesus Anda sobre as Águas', reference: 'Mateus 14:22-33', theme: 'Fé e Dúvida' },
-  { title: 'A Cruz', reference: 'Lucas 23:32-49', theme: 'O Preço do Perdão' },
-  { title: 'A Ressurreição', reference: 'Lucas 24:1-12', theme: 'A Morte Vencida' },
+export const HOME_UI: Record<string, HomeContent> = {
+  pt: {
+    title: "DBS",
+    subtitle: "Um guia prático para ler a Bíblia e descobrir a verdade em comunidade.",
+    facilitatorBtn: "Guia do Facilitador",
+    pathLabel: "Caminho de Descoberta",
+    comingSoon: "O conteúdo completo deste estudo estará disponível em breve. Tente os estudos #7 ou #8 para ver o modelo completo."
+  },
+  en: {
+    title: "DBS",
+    subtitle: "A practical guide to reading the Bible and discovering truth in community.",
+    facilitatorBtn: "Facilitator Guide",
+    pathLabel: "Discovery Path",
+    comingSoon: "Full content for this study will be available soon. Try studies #7 or #8 to see the full model."
+  },
+  fr: {
+    title: "DBS",
+    subtitle: "Un guide pratique pour lire la Bible et découvrir la vérité en communauté.",
+    facilitatorBtn: "Guide du Facilitateur",
+    pathLabel: "Parcours de Découverte",
+    comingSoon: "Le contenu complet de cette étude sera bientôt disponible. Essayez les études #7 ou #8 pour voir le modèle complet."
+  }
+};
+
+export const SCRIPTURES_LIST: MultilingualScriptureItem[] = [
+  { 
+    reference: 'Gênesis 1:1-25',
+    pt: { title: 'A Criação', theme: 'Deus Cria o Mundo' },
+    en: { title: 'Creation', theme: 'God Creates the World' },
+    fr: { title: 'La Création', theme: 'Dieu Crée le Monde' }
+  },
+  { 
+    reference: 'Gênesis 2:4-24',
+    pt: { title: 'A Criação do Homem', theme: 'Relacionamento com Deus' },
+    en: { title: 'Creation of Man', theme: 'Relationship with God' },
+    fr: { title: 'Création de l\'Homme', theme: 'Relation avec Dieu' }
+  },
+  { 
+    reference: 'Gênesis 3:1-13',
+    pt: { title: 'A Desobediência', theme: 'A Queda da Humanidade' },
+    en: { title: 'The Disobedience', theme: 'The Fall of Humanity' },
+    fr: { title: 'La Désobéissance', theme: 'La Chute de l\'Humanité' }
+  },
+  { 
+    reference: 'Gênesis 12:1-8',
+    pt: { title: 'A Promessa', theme: 'Deus Chama Abraão' },
+    en: { title: 'The Promise', theme: 'God Calls Abraham' },
+    fr: { title: 'La Promesse', theme: 'Dieu Appelle Abraham' }
+  },
+  { 
+    reference: 'Gênesis 22:1-19',
+    pt: { title: 'O Sacrifício', theme: 'Deus Proverá' },
+    en: { title: 'The Sacrifice', theme: 'God Will Provide' },
+    fr: { title: 'Le Sacrifice', theme: 'Dieu Pourvoira' }
+  },
+  { 
+    reference: 'Lucas 15:11-32',
+    pt: { title: 'O Filho Pródigo', theme: 'O Amor do Pai' },
+    en: { title: 'The Prodigal Son', theme: 'The Father\'s Love' },
+    fr: { title: 'Le Fils Prodigue', theme: 'L\'Amour du Père' }
+  },
+  { 
+    reference: 'Marcos 2:1-12',
+    pt: { title: 'Jesus e o Paralítico', theme: 'Jesus Tem Autoridade' },
+    en: { title: 'Jesus and the Paralytic', theme: 'Jesus Has Authority' },
+    fr: { title: 'Jésus et le Paralytique', theme: 'Jésus a de l\'Autorité' }
+  },
+  { 
+    reference: 'Mateus 14:22-33',
+    pt: { title: 'Jesus Anda sobre as Águas', theme: 'Fé e Dúvida' },
+    en: { title: 'Jesus Walks on Water', theme: 'Faith and Doubt' },
+    fr: { title: 'Jésus Marche sur l\'Eau', theme: 'Foi et Doute' }
+  },
+  { 
+    reference: 'Lucas 23:32-49',
+    pt: { title: 'A Cruz', theme: 'O Preço do Perdão' },
+    en: { title: 'The Cross', theme: 'The Price of Forgiveness' },
+    fr: { title: 'La Croix', theme: 'Le Prix du Pardon' }
+  },
+  { 
+    reference: 'Lucas 24:1-12',
+    pt: { title: 'A Ressurreição', theme: 'A Morte Vencida' },
+    en: { title: 'The Resurrection', theme: 'Death Defeated' },
+    fr: { title: 'La Résurrection', theme: 'La Mort Vaincue' }
+  },
 ];
 
 export const FAQS: FAQItem[] = [

@@ -59,3 +59,23 @@ export interface StudyContent {
   bibleText: BibleParagraph[];
   quadrants: StudyQuadrants;
 }
+
+export interface HomeContent {
+  title: string;
+  subtitle: string;
+  facilitatorBtn: string;
+  pathLabel: string;
+  comingSoon: string;
+}
+
+export interface LocalizedScriptureItem {
+  title: string;
+  theme: string;
+}
+
+export interface MultilingualScriptureItem {
+  reference: string; // Acts as ID
+  pt: LocalizedScriptureItem;
+  en: LocalizedScriptureItem;
+  fr: LocalizedScriptureItem;
+}
