@@ -31,7 +31,7 @@ const UI_LABELS = {
     openBible: "Abra sua Bíblia em",
     readInBible: "Este texto ainda não está disponível no app. Por favor, leia diretamente na sua Bíblia e use as perguntas abaixo para guiar o estudo.",
     markComplete: "Marcar como Concluído",
-    completed: "Estudo Concluído"
+    completed: "Concluído"
   },
   en: {
     back: "Back",
@@ -50,7 +50,7 @@ const UI_LABELS = {
     openBible: "Open your Bible to",
     readInBible: "This text is not yet available in the app. Please read directly from your Bible and use the questions below to guide the study.",
     markComplete: "Mark as Complete",
-    completed: "Study Completed"
+    completed: "Completed"
   },
   fr: {
     back: "Retour",
@@ -69,7 +69,7 @@ const UI_LABELS = {
     openBible: "Ouvrez votre Bible à",
     readInBible: "Ce texte n'est pas encore disponible dans l'application. Veuillez lire directement dans votre Bible et utiliser les questions ci-dessous pour guider l'étude.",
     markComplete: "Marquer comme Terminé",
-    completed: "Étude Terminée"
+    completed: "Terminé"
   }
 };
 
@@ -122,7 +122,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
   }
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 pb-20 relative">
+    <div className="min-h-screen bg-white font-sans text-gray-900 pb-10 relative">
       
       {/* Success Flash Overlay */}
       <div 
@@ -163,29 +163,33 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
             </div>
          </div>
         
-        {/* Header Status / Title */}
+        {/* Header Actions */}
         <div className="flex items-center gap-3">
-            {/* Show 'Undo' button in header when completed */}
-            <div className={`transition-all duration-500 transform ${isCompleted ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'}`}>
-                 <button 
-                    onClick={onToggleCompletion}
-                    className="flex items-center gap-1.5 text-xs font-bold text-teal-600 bg-teal-50 px-3 py-1.5 rounded-full hover:bg-teal-100 border border-teal-200"
-                 >
-                    <IconCheckCircle className="w-4 h-4" />
-                    {labels.completed}
-                 </button>
-            </div>
+            {/* Completion Button - Always Visible now */}
+            <button 
+                onClick={onToggleCompletion}
+                className={`flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full transition-all duration-300 border
+                ${isCompleted 
+                    ? 'bg-teal-50 text-teal-700 border-teal-200 ring-1 ring-teal-100' 
+                    : 'bg-white text-gray-400 border-gray-200 hover:border-gray-300 hover:text-gray-600'
+                }
+                ${animateButton ? 'scale-110' : 'scale-100'}
+                `}
+                >
+                <IconCheckCircle className={`w-4 h-4 transition-transform duration-300 ${isCompleted ? 'scale-110' : ''}`} />
+                <span className={`${isCompleted ? '' : 'hidden sm:inline'}`}>
+                    {isCompleted ? labels.completed : labels.markComplete}
+                </span>
+            </button>
             
-            <div className={`font-bold text-gray-900 tracking-tight text-sm md:text-base hidden md:block transition-opacity ${isCompleted ? 'opacity-0 hidden' : 'opacity-100'}`}>DBS</div>
+            <button 
+                onClick={() => window.print()}
+                className="flex items-center justify-center p-2 text-gray-400 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"
+                title={labels.print}
+            >
+                <IconPrinter className="w-5 h-5" />
+            </button>
         </div>
-        
-        <button 
-          onClick={() => window.print()}
-          className="flex items-center gap-2 text-teal-700 hover:text-teal-900 transition-colors font-medium text-sm"
-        >
-          <IconPrinter className="w-4 h-4" />
-          <span className="hidden sm:inline">{labels.print}</span>
-        </button>
       </div>
 
       {/* Main Content Area - Full Bleed */}
@@ -331,22 +335,8 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
 
         </section>
 
-        {/* Completion Action (Bottom Bar) */}
-        <div className={`fixed bottom-0 left-0 w-full p-4 bg-white border-t border-gray-200 flex justify-center print:hidden z-40 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] transition-transform duration-500 ease-in-out ${isCompleted ? 'translate-y-full' : 'translate-y-0'}`}>
-             <button 
-                onClick={onToggleCompletion}
-                className={`flex items-center gap-3 px-8 py-4 rounded-full font-bold shadow-lg transition-all duration-300 transform active:scale-95 text-lg
-                ${isCompleted ? 'bg-teal-500 text-white scale-105' : 'bg-gray-900 text-white hover:bg-gray-800 hover:-translate-y-1'}
-                ${animateButton ? 'scale-110 ring-4 ring-teal-200' : ''}
-                `}
-             >
-                <IconCheckCircle className={`w-6 h-6 transition-transform duration-500 ${isCompleted ? 'rotate-[-360deg] scale-125' : ''}`} />
-                {isCompleted ? labels.completed : labels.markComplete}
-             </button>
-        </div>
-
         {/* Footer */}
-        <footer className="bg-gray-50 text-gray-500 py-16 px-6 text-center text-sm print:hidden border-t border-gray-100 mb-16">
+        <footer className="bg-gray-50 text-gray-500 py-16 px-6 text-center text-sm print:hidden border-t border-gray-100">
             <p className="mb-3 font-semibold text-gray-400">{labels.footer}</p>
             <p className="opacity-60">{labels.footerDesc}</p>
         </footer>
