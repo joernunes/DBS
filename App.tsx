@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import Scriptures from './components/Scriptures';
 import StudyPage from './components/StudyPage';
 import GuidePage from './components/GuidePage';

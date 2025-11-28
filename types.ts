@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 export interface NavItem {
   label: string;
@@ -42,7 +42,20 @@ export interface StudyQuadrants {
   };
 }
 
+export interface LocalizedStudyContent {
+  title: string;
+  bibleText: BibleParagraph[];
+  quadrants: StudyQuadrants;
+}
+
+export interface MultilingualStudyContent {
+  pt: LocalizedStudyContent;
+  en: LocalizedStudyContent;
+  fr: LocalizedStudyContent;
+}
+
 export interface StudyContent {
+  // Legacy support if needed, but we are moving to Multilingual
   bibleText: BibleParagraph[];
   quadrants: StudyQuadrants;
 }
