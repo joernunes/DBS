@@ -241,30 +241,39 @@ function App() {
                 
                 <button 
                     onClick={() => navigateTo('home')}
-                    className={`flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
+                    className={`group relative flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
                     ${viewMode === 'home' ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
                 >
                     <IconHome className="w-5 h-5" />
+                    <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-sm">
+                        Início
+                    </span>
                 </button>
 
                 <div className="w-px h-4 bg-gray-700 mx-1"></div>
 
                 <button 
                     onClick={() => navigateTo('dbs')}
-                    className={`flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
+                    className={`group relative flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
                     ${viewMode === 'dbs' ? 'bg-teal-600 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
                 >
                     <IconBookOpen className="w-5 h-5" />
+                    <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-sm">
+                        Estudos
+                    </span>
                 </button>
                 
                 <div className="w-px h-4 bg-gray-700 mx-1"></div>
 
                 <button 
                     onClick={() => navigateTo('meditation')}
-                    className={`flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
+                    className={`group relative flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
                     ${viewMode === 'meditation' ? 'bg-orange-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
                 >
                     <IconSun className="w-5 h-5" />
+                    <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-sm">
+                        Meditação
+                    </span>
                 </button>
 
                 <div className="w-px h-4 bg-gray-700 mx-1"></div>
@@ -272,9 +281,12 @@ function App() {
                 {/* Settings Button */}
                 <button 
                     onClick={() => setIsSettingsOpen(true)}
-                    className={`flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm text-gray-400 hover:text-white hover:bg-white/10`}
+                    className={`group relative flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm text-gray-400 hover:text-white hover:bg-white/10`}
                 >
                     <IconSettings className="w-5 h-5" />
+                    <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-sm">
+                        Ajustes
+                    </span>
                 </button>
             </div>
         </div>
