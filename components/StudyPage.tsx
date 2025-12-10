@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { IconArrowLeft, IconPrinter, IconCheckCircle, IconBookOpen } from './Icons';
 import { LocalizedStudyContent, Language } from '../types';
-import { STUDY_CONTENTS, GENERIC_QUESTIONS } from '../constants';
+import { STUDY_CONTENTS, GENERIC_QUESTIONS, SCRIPTURES_LIST } from '../constants';
 
 interface StudyPageProps {
   study: { title: string; reference: string }; 
@@ -99,15 +99,22 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
   // Logic to determine content
   const multiContent = STUDY_CONTENTS[study.reference];
   
+  // Dynamic lookup for title to ensure translation works
+  const scriptureItem = SCRIPTURES_LIST.find(s => s.reference === study.reference);
+  const currentTitle = scriptureItem ? scriptureItem[language].title : study.title;
+  
   let content: LocalizedStudyContent;
   
   if (multiContent) {
     // Specific content exists
-    content = multiContent[language];
+    content = {
+        ...multiContent[language],
+        title: currentTitle // Ensure title matches list even for specific content
+    };
   } else {
     // FALLBACK: Use Generic Questions
     content = {
-      title: study.title,
+      title: currentTitle,
       bibleText: [], // Empty indicates generic mode
       isGeneric: true,
       quadrants: {
@@ -193,7 +200,8 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
             <span className="inline-block py-1.5 px-4 border border-gray-300 rounded-full text-xs font-bold uppercase tracking-widest text-gray-500 mb-6">
               {labels.studyLabel}
             </span>
-            <h1 className="text-4xl md:text-6xl font-serif font-medium text-gray-900 mb-4 tracking-tight leading-tight">
+            {/* Added key to force update on language change */}
+            <h1 key={`${language}-title`} className="text-4xl md:text-6xl font-serif font-medium text-gray-900 mb-4 tracking-tight leading-tight">
               {content.title}
             </h1>
             <p className="text-teal-700 font-sans uppercase tracking-widest text-sm font-bold">
@@ -205,7 +213,8 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
         {/* Bible Text Section */}
         <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
             <div className="max-w-3xl mx-auto">
-                <div className="font-serif text-xl md:text-2xl leading-loose text-gray-800 antialiased space-y-8">
+                {/* Added key to force update on language change */}
+                <div key={`${language}-text`} className="font-serif text-xl md:text-2xl leading-loose text-gray-800 antialiased space-y-8">
                   {content.bibleText.length > 0 ? (
                     // RENDER FULL TEXT
                     content.bibleText.map((paragraph, index) => (
@@ -248,7 +257,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                         {labels.godDesc}
                     </p>
                     
-                    <ul className="space-y-6 text-lg md:text-xl font-medium text-gray-700">
+                    <ul key={`${language}-god`} className="space-y-6 text-lg md:text-xl font-medium text-gray-700">
                         {content.quadrants.god.map((item, i) => (
                           <li key={i} className="flex gap-4 items-start group">
                               <span className="text-teal-500 mt-1 font-bold">?</span>
@@ -268,7 +277,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                         {labels.peopleDesc}
                     </p>
                     
-                    <ul className="space-y-6 text-lg md:text-xl font-medium text-gray-700">
+                    <ul key={`${language}-people`} className="space-y-6 text-lg md:text-xl font-medium text-gray-700">
                         {content.quadrants.people.map((item, i) => (
                           <li key={i} className="flex gap-4 items-start group">
                               <span className="text-sky-500 mt-1 font-bold">?</span>
@@ -288,7 +297,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                         {labels.obeyDesc}
                     </p>
                     
-                    <div className="bg-white p-8 rounded-xl shadow-sm border border-orange-100">
+                    <div key={`${language}-obey`} className="bg-white p-8 rounded-xl shadow-sm border border-orange-100">
                          {content.isGeneric ? (
                             <p className="font-serif text-lg leading-relaxed text-gray-700">
                                 {content.quadrants.obedience.example}
@@ -311,7 +320,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                         {labels.shareDesc}
                     </p>
                     
-                     <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+                     <div key={`${language}-share`} className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
                         {content.isGeneric ? (
                              <p className="font-serif text-lg leading-relaxed text-gray-700">
                                 {content.quadrants.obedience.share}

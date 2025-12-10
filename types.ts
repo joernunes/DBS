@@ -67,3 +67,35 @@ export interface GenericQuestions {
     share: string;
   }
 }
+
+// Morning Meditation Types
+export interface GuideStep {
+  title: string;
+  desc: string;
+  bullets?: string[];
+}
+
+export interface GuidePhase {
+  title: string;
+  desc?: string;
+  steps: GuideStep[];
+}
+
+export interface MorningUI {
+  title: string;
+  subtitle: string;
+  guideBtn: string;
+  backBtn: string;
+  listTitle: string;
+  guideTitle: string;
+  guideIntro: string; // New introduction text
+  guidePhases: GuidePhase[]; // New structure for the guide
+}
+
+export interface MeditationItem {
+  id: string;
+  reference: string;
+  pt: { title: string; theme: string };
+  en: { title: string; theme: string };
+  fr: { title: string; theme: string };
+}

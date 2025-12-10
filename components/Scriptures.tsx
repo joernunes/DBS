@@ -15,7 +15,6 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
   const ui = HOME_UI[language];
   
   const handleStudyClick = (index: number) => {
-    // Open ANY study now. Content logic is handled in StudyPage.
     const item = SCRIPTURES_LIST[index];
     const localizedItem = item[language];
     
@@ -27,11 +26,11 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
   };
 
   return (
-    <section id="scriptures" className="py-12 md:py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="scriptures" className="py-12 md:py-20 bg-white min-h-screen">
+      <div className="container mx-auto px-4 pb-24"> {/* Added padding bottom for Dynamic Island */}
         
-        {/* Language Switcher - Floating Top Right */}
-        <div className="absolute top-4 right-4 z-50">
+        {/* Language Switcher - Floating Top LEFT (Updated) */}
+        <div className="absolute top-4 left-4 z-50">
              <div className="flex bg-gray-100 rounded-lg p-1 shadow-sm">
                 <button 
                     onClick={() => setLanguage('pt')}
@@ -54,7 +53,7 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
             </div>
         </div>
         
-        {/* Header - Acting as the Main Page Header now */}
+        {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12 mt-8">
           <div className="mb-6 flex justify-center">
             <div className="p-3 bg-teal-50 rounded-xl text-teal-700">
@@ -105,7 +104,8 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
                     </div>
                     
                     <div>
-                      <h4 className={`text-lg font-bold group-hover:text-teal-700 transition-colors flex items-center gap-2 text-gray-900 ${isCompleted ? 'line-through text-gray-400 group-hover:text-teal-700 group-hover:no-underline' : ''}`}>
+                      {/* Removed line-through and gray text color for completed items */}
+                      <h4 className={`text-lg font-bold group-hover:text-teal-700 transition-colors flex items-center gap-2 text-gray-900`}>
                         {localizedItem.title}
                       </h4>
                       <span className="text-sm text-gray-500 uppercase tracking-wide font-medium">{localizedItem.theme}</span>

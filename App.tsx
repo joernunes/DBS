@@ -3,17 +3,22 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import Scriptures from './components/Scriptures';
 import StudyPage from './components/StudyPage';
 import GuidePage from './components/GuidePage';
+import MorningMeditation from './components/MorningMeditation';
+import { IconBookOpen, IconSun } from './components/Icons';
 import { Scripture, Language } from './types';
+
+type ViewMode = 'dbs' | 'meditation';
 
 function App() {
   const [activeStudy, setActiveStudy] = useState<Scripture | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+  const [viewMode, setViewMode] = useState<ViewMode>('dbs');
   
-  // Initialize language from localStorage or default to 'pt'
+  // Initialize language from localStorage or default to 'fr' (French)
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem('dbs_language');
-    return (saved === 'pt' || saved === 'en' || saved === 'fr') ? saved : 'pt';
+    return (saved === 'pt' || saved === 'en' || saved === 'fr') ? saved : 'fr';
   });
 
   // Initialize completed studies from localStorage
@@ -95,7 +100,7 @@ function App() {
     window.history.back();
   };
 
-  // Renderização das Views
+  // Renderização das Views de Página Inteira (StudyPage ou GuidePage)
   if (activeStudy) {
     return (
       <StudyPage 
@@ -119,17 +124,50 @@ function App() {
     );
   }
 
+  // Visualização Principal (Home) com Dynamic Island
   return (
-    <div className="font-sans text-gray-900 bg-white selection:bg-teal-200 selection:text-teal-900 min-h-screen flex flex-col">
+    <div className="font-sans text-gray-900 bg-white selection:bg-teal-200 selection:text-teal-900 min-h-screen flex flex-col relative">
       <main className="flex-grow">
-        <Scriptures 
-          onOpenStudy={handleOpenStudy} 
-          onOpenGuide={handleOpenGuide}
-          language={language}
-          setLanguage={setLanguage}
-          completedStudies={completedStudies}
-        />
+        {viewMode === 'dbs' ? (
+             <Scriptures 
+             onOpenStudy={handleOpenStudy} 
+             onOpenGuide={handleOpenGuide}
+             language={language}
+             setLanguage={setLanguage}
+             completedStudies={completedStudies}
+           />
+        ) : (
+            <MorningMeditation 
+              language={language} 
+              setLanguage={setLanguage}
+            />
+        )}
       </main>
+
+      {/* Dynamic Island Navigation */}
+      <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
+          <div className="bg-gray-900/90 backdrop-blur-xl text-white p-1.5 rounded-full shadow-2xl flex items-center gap-1 pointer-events-auto transform transition-all hover:scale-105 border border-white/10">
+              <button 
+                onClick={() => setViewMode('dbs')}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full transition-all duration-300 font-medium text-sm
+                ${viewMode === 'dbs' ? 'bg-teal-600 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
+              >
+                  <IconBookOpen className="w-4 h-4" />
+                  <span>DBS</span>
+              </button>
+              
+              <div className="w-px h-4 bg-gray-700 mx-1"></div>
+
+              <button 
+                onClick={() => setViewMode('meditation')}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full transition-all duration-300 font-medium text-sm
+                ${viewMode === 'meditation' ? 'bg-orange-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
+              >
+                  <IconSun className="w-4 h-4" />
+                  <span>MCT</span>
+              </button>
+          </div>
+      </div>
     </div>
   );
 }

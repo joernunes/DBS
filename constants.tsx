@@ -1,4 +1,4 @@
-import { MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions } from './types';
+import { MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions, MorningUI, MeditationItem } from './types';
 
 export const NAV_LINKS = [
   { label: 'O que é', href: 'what-is' },
@@ -29,6 +29,308 @@ export const HOME_UI: Record<string, HomeContent> = {
     comingSoon: "Bientôt disponible"
   }
 };
+
+export const MORNING_UI: Record<string, MorningUI> = {
+  pt: {
+    title: "Meditação Matinal",
+    subtitle: "Um momento diário para conectar seu coração ao coração de Deus.",
+    guideBtn: "Como Meditar",
+    backBtn: "Voltar",
+    listTitle: "Devocionais Diários",
+    guideTitle: "O Método da Comunhão Transformadora",
+    guideIntro: "Este método é um guia para transformar a formalidade religiosa em uma experiência viva e íntima com Deus. Use este roteiro focando na qualidade da entrega e na constância do hábito.",
+    guidePhases: [
+      {
+        title: "Fase I: A Prioridade e a Preparação",
+        desc: "O fracasso espiritual se deve à ausência desse tempo sagrado. A primeira etapa é estabelecer este tempo como prioridade.",
+        steps: [
+          {
+            title: "1. Estabeleça o Seu Santuário",
+            desc: "Encontre um lugar onde você não será interrompido, buscando o isolamento intencional. O inimigo levantará obstáculos para impedi-lo.",
+          },
+          {
+            title: "2. Defina o Horário Sagrado",
+            desc: "Decida acordar mais cedo e desligue as telas. Não é uma questão de tempo, mas de prioridade.",
+            bullets: ["Dica: É melhor ter 15 minutos diários do que 2 horas uma vez por semana. A inconstância é a inimiga."]
+          }
+        ]
+      },
+      {
+        title: "Fase II: O Ritual da Transformação",
+        desc: "Esta é a hora em que você se coloca diante do Oleiro para ser remodelado.",
+        steps: [
+          {
+            title: "3. A Leitura Reflexiva",
+            desc: "Não leia como quem estuda para um exame, mas como quem recebe uma carta pessoal de amor.",
+            bullets: ["Leia devagar, absorvendo cada palavra.", "Pergunte-se: 'O que Deus está me dizendo aqui?'", "Melhor entender profundamente um verso do que ler muito superficialmente."]
+          },
+          {
+            title: "4. A Confissão Específica",
+            desc: "Abra seu coração em confissão sincera. Não esconda nem justifique seus erros.",
+            bullets: ["Seja específico sobre seus pecados (orgulho, impaciência, palavra áspera).", "Muitos fracassam porque fazem confissões genéricas."]
+          },
+          {
+            title: "5. A Consagração Total",
+            desc: "Faça sua consagração diária: entregue-se novamente completamente.",
+            bullets: ["Coloque seus planos, sonhos e tempo sobre o altar.", "Não retenha pequenas áreas, pois podem se tornar fortalezas para o inimigo."]
+          },
+          {
+            title: "6. A Oração Abrangente",
+            desc: "Apresente suas necessidades, mas não se esqueça de interceder pelos outros.",
+            bullets: ["Ore pelos perdidos, pelos que sofrem e pelos seus inimigos.", "Evite orações egoístas centradas apenas em desejos pessoais."]
+          },
+          {
+            title: "7. O Silêncio Intencional",
+            desc: "Pratique o silêncio diante de Deus. Escute e esteja atento às impressões do Espírito Santo.",
+            bullets: ["Deus raramente grita; Ele sussurra.", "Você só ouvirá quando fizer silêncio."]
+          },
+          {
+            title: "8. O Compromisso Diário",
+            desc: "Saia da hora secreta com propósito definido.",
+            bullets: ["Estabeleça o que Deus lhe pediu para fazer: que mudança de atitude, que serviço prestar ou que hábito abandonar."]
+          }
+        ]
+      },
+      {
+        title: "Fase III: A Conexão Contínua",
+        steps: [
+          {
+            title: "Andar com Deus",
+            desc: "A comunhão não se limita à hora secreta. Leve a presença divina para cada atividade, cada conversa e cada decisão do dia.",
+            bullets: ["Renovação Constante: O maná de ontem não serve para hoje.", "Resultado: O coração endurecido é amolecido e a mente confusa é esclarecida."]
+          }
+        ]
+      }
+    ]
+  },
+  en: {
+    title: "Morning Meditation",
+    subtitle: "A daily moment to connect your heart to God's heart.",
+    guideBtn: "How to Meditate",
+    backBtn: "Back",
+    listTitle: "Daily Devotionals",
+    guideTitle: "The Transformational Communion Method",
+    guideIntro: "This method is a guide to transform religious formality into a living, intimate experience with God. Use this script focusing on the quality of surrender and the consistency of the habit.",
+    guidePhases: [
+      {
+        title: "Phase I: Priority and Preparation",
+        desc: "Spiritual failure is due to the absence of this sacred time. The first step is to establish this time as a priority.",
+        steps: [
+          {
+            title: "1. Establish Your Sanctuary",
+            desc: "Find a place where you will not be interrupted, seeking intentional isolation. The enemy will raise obstacles to stop you.",
+          },
+          {
+            title: "2. Define Sacred Time",
+            desc: "Decide to wake up earlier and turn off screens. It is not a matter of time, but of priority.",
+            bullets: ["Tip: It is better to have 15 minutes daily than 2 hours once a week. Inconsistency is the enemy."]
+          }
+        ]
+      },
+      {
+        title: "Phase II: The Transformation Ritual",
+        desc: "This is the time when you place yourself before the Potter to be reshaped.",
+        steps: [
+          {
+            title: "3. Reflective Reading",
+            desc: "Do not read as one studying for an exam, but as one receiving a personal love letter.",
+            bullets: ["Read slowly, absorbing every word.", "Ask yourself: 'What is God telling me here?'", "Better to deeply understand one verse than to read superficially."]
+          },
+          {
+            title: "4. Specific Confession",
+            desc: "Open your heart in sincere confession. Do not hide or justify your mistakes.",
+            bullets: ["Be specific about your sins (pride, impatience, harsh words).", "Many fail because they make generic confessions."]
+          },
+          {
+            title: "5. Total Consecration",
+            desc: "Make your daily consecration: surrender yourself completely again.",
+            bullets: ["Place your plans, dreams, and time on the altar.", "Do not withhold small areas, as they can become strongholds for the enemy."]
+          },
+          {
+            title: "6. Comprehensive Prayer",
+            desc: "Present your needs, but do not forget to intercede for others.",
+            bullets: ["Pray for the lost, for those who suffer, and for your enemies.", "Avoid selfish prayers centered only on personal desires."]
+          },
+          {
+            title: "7. Intentional Silence",
+            desc: "Practice silence before God. Listen and be attentive to the impressions of the Holy Spirit.",
+            bullets: ["God rarely shouts; He whispers.", "You will only hear when you are silent."]
+          },
+          {
+            title: "8. Daily Commitment",
+            desc: "Leave the secret hour with a defined purpose.",
+            bullets: ["Establish what God asked you to do: what attitude change, what service to render, or what habit to abandon."]
+          }
+        ]
+      },
+      {
+        title: "Phase III: Continuous Connection",
+        steps: [
+          {
+            title: "Walking with God",
+            desc: "Communion is not limited to the secret hour. Take the divine presence into every activity, conversation, and decision of the day.",
+            bullets: ["Constant Renewal: Yesterday's manna does not serve for today.", "Result: The hardened heart is softened, and the confused mind is clarified."]
+          }
+        ]
+      }
+    ]
+  },
+  fr: {
+    title: "Méditation Matinale",
+    subtitle: "Un moment quotidien pour connecter votre cœur au cœur de Dieu.",
+    guideBtn: "Comment Méditer",
+    backBtn: "Retour",
+    listTitle: "Dévotions Quotidiennes",
+    guideTitle: "La Méthode de Communion Transformationnelle",
+    guideIntro: "Cette méthode est un guide pour transformer la formalité religieuse en une expérience vivante et intime avec Dieu. Utilisez ce scénario en vous concentrant sur la qualité de l'abandon et la constance de l'habitude.",
+    guidePhases: [
+      {
+        title: "Phase I : Priorité et Préparation",
+        desc: "L'échec spirituel est dû à l'absence de ce temps sacré. La première étape est d'établir ce temps comme une priorité.",
+        steps: [
+          {
+            title: "1. Établissez Votre Sanctuaire",
+            desc: "Trouvez un endroit où vous ne serez pas interrompu, en cherchant l'isolement intentionnel. L'ennemi dressera des obstacles pour vous arrêter.",
+          },
+          {
+            title: "2. Définissez le Temps Sacré",
+            desc: "Décidez de vous lever plus tôt et d'éteindre les écrans. Ce n'est pas une question de temps, mais de priorité.",
+            bullets: ["Conseil : Il vaut mieux avoir 15 minutes par jour que 2 heures une fois par semaine. L'inconstance est l'ennemi."]
+          }
+        ]
+      },
+      {
+        title: "Phase II : Le Rituel de Transformation",
+        desc: "C'est le moment où vous vous placez devant le Potier pour être remodelé.",
+        steps: [
+          {
+            title: "3. Lecture Réflexive",
+            desc: "Ne lisez pas comme quelqu'un qui étudie pour un examen, mais comme quelqu'un qui reçoit une lettre d'amour personnelle.",
+            bullets: ["Lisez lentement, en absorbant chaque mot.", "Demandez-vous : 'Que me dit Dieu ici ?'", "Mieux vaut comprendre profondément un verset que de lire superficiellement."]
+          },
+          {
+            title: "4. Confession Spécifique",
+            desc: "Ouvrez votre cœur dans une confession sincère. Ne cachez pas et ne justifiez pas vos erreurs.",
+            bullets: ["Soyez précis sur vos péchés (orgueil, impatience, paroles dures).", "Beaucoup échouent parce qu'ils font des confessions génériques."]
+          },
+          {
+            title: "5. Consécration Totale",
+            desc: "Faites votre consécration quotidienne : abandonnez-vous complètement à nouveau.",
+            bullets: ["Placez vos projets, vos rêves et votre temps sur l'autel.", "Ne retenez pas de petits domaines, car ils peuvent devenir des forteresses pour l'ennemi."]
+          },
+          {
+            title: "6. Prière Complète",
+            desc: "Présentez vos besoins, mais n'oubliez pas d'intercéder pour les autres.",
+            bullets: ["Priez pour les perdus, pour ceux qui souffrent et pour vos ennemis.", "Évitez les prières égoïstes centrées uniquement sur des désirs personnels."]
+          },
+          {
+            title: "7. Silence Intentionnel",
+            desc: "Pratiquez le silence devant Dieu. Écoutez et soyez attentif aux impressions du Saint-Esprit.",
+            bullets: ["Dieu crie rarement ; Il murmure.", "Vous n'entendrez que lorsque vous ferez silence."]
+          },
+          {
+            title: "8. Engagement Quotidien",
+            desc: "Quittez l'heure secrète avec un objectif défini.",
+            bullets: ["Établissez ce que Dieu vous a demandé de faire : quel changement d'attitude, quel service rendre ou quelle habitude abandonner."]
+          }
+        ]
+      },
+      {
+        title: "Phase III : Connexion Continue",
+        steps: [
+          {
+            title: "Marcher avec Dieu",
+            desc: "La communion ne se limite pas à l'heure secrète. Apportez la présence divine dans chaque activité, conversation et décision de la journée.",
+            bullets: ["Renouveau Constant : La manne d'hier ne sert pas pour aujourd'hui.", "Résultat : Le cœur endurci est adouci et l'esprit confus est éclairé."]
+          }
+        ]
+      }
+    ]
+  }
+};
+
+export const MORNING_MEDITATIONS_LIST: MeditationItem[] = [
+  {
+    id: 'm1',
+    reference: 'Salmos 103:1-5',
+    pt: { 
+        title: 'Ordenando a Alma', 
+        theme: 'Não é apenas agradecer, é ordenar à sua alma que saia da amnésia espiritual. Cada benefício esquecido é um terreno cedido à ingratidão.' 
+    },
+    en: { 
+        title: 'Commanding the Soul', 
+        theme: 'It is not just thanking; it is commanding your soul to wake from spiritual amnesia. Every forgotten benefit is ground yielded to ingratitude.' 
+    },
+    fr: { 
+        title: 'Commander à l\'Âme', 
+        theme: 'Ce n\'est pas seulement remercier, c\'est ordonner à votre âme de sortir de l\'amnésie spirituelle. Chaque bienfait oublié est un terrain cédé à l\'ingratitude.' 
+    }
+  },
+  {
+    id: 'm2',
+    reference: 'Filipenses 4:6-7',
+    pt: { 
+        title: 'A Troca Divina', 
+        theme: 'A ansiedade é um sinal de que você está carregando o que pertence a Deus. A troca é: sua preocupação pela paz dEle, que monta guarda sobre sua mente.' 
+    },
+    en: { 
+        title: 'The Divine Exchange', 
+        theme: 'Anxiety is a signal that you are carrying what belongs to God. The exchange is: your worry for His peace, which stands guard over your mind.' 
+    },
+    fr: { 
+        title: 'L\'Échange Divin', 
+        theme: 'L\'anxiété est un signal que vous portez ce qui appartient à Dieu. L\'échange est : votre inquiétude contre Sa paix, qui monte la garde sur votre esprit.' 
+    }
+  },
+  {
+    id: 'm3',
+    reference: 'Lamentações 3:22-24',
+    pt: { 
+        title: 'O Reinício', 
+        theme: 'Mesmo no meio dos escombros emocionais, a misericórdia de Deus reinicia o relógio a cada alvorecer. Sua fidelidade não depende da sua estabilidade.' 
+    },
+    en: { 
+        title: 'The Reset', 
+        theme: 'Even amidst emotional rubble, God\'s mercy resets the clock at every dawn. His faithfulness does not depend on your stability.' 
+    },
+    fr: { 
+        title: 'La Réinitialisation', 
+        theme: 'Même au milieu des décombres émotionnels, la miséricorde de Dieu remet l\'horloge à zéro à chaque aube. Sa fidélité ne dépend pas de votre stabilité.' 
+    }
+  },
+  {
+    id: 'm4',
+    reference: 'Provérbios 3:5-6',
+    pt: { 
+        title: 'Rendição Intelectual', 
+        theme: 'Confiar é admitir que sua visão é limitada. É escolher a direção dEle, mesmo quando o mapa não faz sentido para a sua lógica humana.' 
+    },
+    en: { 
+        title: 'Intellectual Surrender', 
+        theme: 'Trusting is admitting your vision is limited. It is choosing His direction, even when the map makes no sense to your human logic.' 
+    },
+    fr: { 
+        title: 'Reddition Intellectuelle', 
+        theme: 'Faire confiance, c\'est admettre que votre vision est limitée. C\'est choisir Sa direction, même lorsque la carte n\'a aucun sens pour votre logique humaine.' 
+    }
+  },
+  {
+    id: 'm5',
+    reference: 'Salmos 23',
+    pt: { 
+        title: 'Presença no Vale', 
+        theme: 'O segredo não é a ausência do vale, mas a presença do Pastor. O medo se dissipa não quando o problema some, mas quando você percebe Quem está ao seu lado.' 
+    },
+    en: { 
+        title: 'Presence in the Valley', 
+        theme: 'The secret is not the absence of the valley, but the presence of the Shepherd. Fear dissipates not when the problem vanishes, but when you realize Who is by your side.' 
+    },
+    fr: { 
+        title: 'Présence dans la Vallée', 
+        theme: 'Le secret n\'est pas l\'absence de la vallée, mais la présence du Berger. La peur se dissipe non pas quand le problème disparaît, mais quand vous réalisez Qui est à vos côtés.' 
+    }
+  },
+];
 
 export const GENERIC_QUESTIONS: Record<string, GenericQuestions> = {
   pt: {
