@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SCRIPTURES_LIST, HOME_UI } from '../constants';
-import { IconBookOpen, IconArrowRight, IconDownload, IconCheckCircle } from './Icons';
+import { IconBookOpen, IconArrowRight, IconDownload } from './Icons';
 import { Scripture, Language } from '../types';
 
 interface ScripturesProps {
@@ -8,10 +8,9 @@ interface ScripturesProps {
   onOpenGuide?: () => void;
   language: Language;
   setLanguage: (lang: Language) => void;
-  completedStudies: string[];
 }
 
-const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, language, setLanguage, completedStudies }) => {
+const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, language, setLanguage }) => {
   const ui = HOME_UI[language];
   
   const handleStudyClick = (index: number) => {
@@ -63,7 +62,6 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
           <div className="space-y-3">
             {SCRIPTURES_LIST.map((item, index) => {
               const localizedItem = item[language];
-              const isCompleted = completedStudies.includes(item.reference);
               
               return (
                 <div 
@@ -73,9 +71,8 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
                 >
                   <div className="flex items-center gap-5">
                     <div className="relative">
-                        <span className={`flex-shrink-0 w-10 h-10 flex items-center justify-center font-bold rounded-full text-lg transition-colors
-                        ${isCompleted ? 'bg-teal-500 text-white' : 'bg-teal-100 text-teal-800'}`}>
-                        {isCompleted ? <IconCheckCircle className="w-6 h-6" /> : index + 1}
+                        <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center font-bold rounded-full text-lg transition-colors bg-teal-100 text-teal-800">
+                          {index + 1}
                         </span>
                     </div>
                     

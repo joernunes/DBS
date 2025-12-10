@@ -19,6 +19,7 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ language, setLanguage, on
     
     // Reader State
     const [activeResource, setActiveResource] = useState<Resource | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
     
     // Upload Form State
     const [uploadTitle, setUploadTitle] = useState('');
@@ -34,6 +35,11 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ language, setLanguage, on
     const [adminError, setAdminError] = useState(false);
 
     const ui = RESOURCES_UI[language];
+
+    useEffect(() => {
+        // Detect mobile user agent for PDF handling
+        setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    }, []);
 
     // Load Data based on Tab
     const refreshData = async () => {
@@ -140,6 +146,11 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ language, setLanguage, on
         const isPdf = activeResource.fileType?.includes('pdf') || activeResource.fileName.endsWith('.pdf');
         const isImage = activeResource.fileType?.includes('image') || activeResource.fileName.match(/\.(jpg|jpeg|png|gif)$/i);
 
+        // Mobile PDF Fix: Use Google Viewer if on mobile to avoid download forcing
+        const pdfViewerUrl = isPdf && isMobile 
+            ? `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(activeResource.fileUrl || '')}`
+            : activeResource.fileUrl;
+
         return (
             <div className="fixed inset-0 z-[60] bg-black flex flex-col animate-in slide-in-from-bottom duration-300">
                 {/* Reader Header */}
@@ -165,11 +176,27 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ language, setLanguage, on
 
                 <div className="flex-1 bg-gray-800 flex items-center justify-center relative overflow-hidden">
                      {isPdf ? (
-                        <iframe 
-                            src={activeResource.fileUrl} 
-                            className="w-full h-full border-0 bg-white" 
-                            title="PDF Viewer"
-                        />
+                        <>
+                            <iframe 
+                                src={pdfViewerUrl} 
+                                className="w-full h-full border-0 bg-white" 
+                                title="PDF Viewer"
+                            />
+                            {/* Mobile Fallback Button */}
+                            {isMobile && (
+                                <div className="absolute bottom-10 left-0 right-0 flex justify-center z-10 pointer-events-none">
+                                    <a 
+                                        href={activeResource.fileUrl} 
+                                        target="_blank"
+                                        rel="noreferrer" 
+                                        className="pointer-events-auto bg-teal-600 text-white px-6 py-3 rounded-full shadow-xl font-bold text-sm flex items-center gap-2 hover:bg-teal-700 transition-colors"
+                                    >
+                                        <IconDownload className="w-4 h-4" />
+                                        Abrir no Navegador
+                                    </a>
+                                </div>
+                            )}
+                        </>
                      ) : isImage ? (
                         <img 
                             src={activeResource.fileUrl} 

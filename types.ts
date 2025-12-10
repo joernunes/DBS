@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type Language = 'pt' | 'en' | 'fr';
+export type Language = 'pt' | 'en' | 'fr' | 'es';
 
 export interface Scripture {
   title: string;
@@ -37,6 +37,7 @@ export interface MultilingualStudyContent {
   pt: LocalizedStudyContent;
   en: LocalizedStudyContent;
   fr: LocalizedStudyContent;
+  es: LocalizedStudyContent;
 }
 
 export interface HomeContent {
@@ -70,6 +71,7 @@ export interface MultilingualScriptureItem {
   pt: LocalizedScriptureItem;
   en: LocalizedScriptureItem;
   fr: LocalizedScriptureItem;
+  es: LocalizedScriptureItem;
 }
 
 export interface GenericQuestions {
@@ -111,6 +113,7 @@ export interface MeditationItem {
   pt: { title: string; theme: string };
   en: { title: string; theme: string };
   fr: { title: string; theme: string };
+  es: { title: string; theme: string };
 }
 
 // Resource / File Upload Types

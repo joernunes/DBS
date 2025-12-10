@@ -186,6 +186,65 @@ const TRANSLATIONS = {
       title: "DBS — Guide du Facilitateur",
       desc: "Imprimez ce guide et emportez-le à vos réunions."
     }
+  },
+  es: {
+    back: "Volver al Inicio",
+    headerTitle: "GUÍA DEL FACILITADOR",
+    print: "Imprimir Guía",
+    tagline: "Modelo de Reunión",
+    title: "Guion de Descubrimiento",
+    subtitle: "Usa esta guía para facilitar cualquier texto bíblico",
+    intro: "\"No necesitas ser un experto. Tu papel es solo hacer las preguntas y dejar que el grupo descubra las respuestas en el texto. El verdadero maestro es el Espíritu Santo.\"",
+    lookBack: {
+      title: "Mirar Atrás",
+      time: "15-20 min",
+      desc: "Empieza preguntando cómo fue la semana. Crea un ambiente de cuidado mutuo.",
+      q1: "¿De qué estás agradecido esta semana?",
+      q2: "¿Cuál fue el mayor desafío/estrés de la semana?",
+      accountability: "Rendición de Cuentas:",
+      accountabilityQ: "¿Cómo fue tu obediencia al \"Yo voy a...\" de la semana pasada? ¿Con quién compartiste?"
+    },
+    readRetell: {
+      title: "Leer y Contar",
+      time: "15 min",
+      desc: "El objetivo es fijar la historia en la mente de todos antes de analizar.",
+      step1: "Pide a alguien que lea el texto en voz alta mientras los demás siguen.",
+      step2: "Pide a otra persona que lea en otra versión (si hay).",
+      step3: "Pide a alguien que <strong>cuente la historia</strong> con sus propias palabras. El grupo puede ayudar a completar detalles olvidados."
+    },
+    lookUp: {
+      tag: "Mirar Arriba",
+      godTitle: "Sobre Dios",
+      godDesc: "¿Qué nos dice este texto sobre Dios Padre, Jesús o el Espíritu Santo?",
+      auxTitle: "Preguntas Auxiliares:",
+      godQ1: "¿Cuáles son sus atributos o carácter aquí? (Amoroso, Justo, Poderoso...)",
+      godQ2: "¿Qué está haciendo o diciendo Él?",
+      godQ3: "¿Hay alguna promesa para reclamar?",
+      peopleTitle: "Sobre Personas",
+      peopleDesc: "¿Qué nos dice este texto sobre la humanidad o sobre nosotros mismos?",
+      peopleQ1: "¿Hay algún ejemplo a seguir?",
+      peopleQ2: "¿Hay algún pecado o error a evitar?",
+      peopleQ3: "¿Qué revela esto sobre la condición humana?"
+    },
+    lookForward: {
+      tag: "Mirar Adelante",
+      obeyTitle: "Obediencia",
+      obeyDesc: "Si esto es verdad, ¿qué voy a hacer al respecto?",
+      iWillTitle: "La Declaración \"Yo voy a...\"",
+      iWillDesc: "Cada persona debe crear una frase de acción que sea:",
+      specific: "Específica",
+      measurable: "Medible",
+      achievable: "Alcanzable esta semana",
+      shareTitle: "Compartir",
+      shareDesc: "¿Con quién voy a compartir esta historia/verdad?",
+      shareSpecific: "Nombre Específico",
+      shareInst: "Anima a cada uno a pensar en una persona de su círculo (familia, trabajo, vecinos) que necesita escuchar lo que se aprendió hoy.",
+      shareQuote: "\"Voy a contar la historia a...\""
+    },
+    footer: {
+      title: "DBS — Guía del Facilitador",
+      desc: "Imprime esta guía y llévala a tus reuniones."
+    }
   }
 };
 

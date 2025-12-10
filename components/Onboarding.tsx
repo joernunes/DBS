@@ -56,6 +56,20 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
                     </button>
 
                     <button 
+                        onClick={() => onComplete('es')}
+                        className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                        <div className="flex items-center gap-4">
+                            <span className="text-2xl">🇪🇸</span>
+                            <div className="text-left">
+                                <span className="block font-bold">Español</span>
+                                <span className="text-xs text-gray-400">Comenzar viaje</span>
+                            </div>
+                        </div>
+                        <IconArrowRight className="w-5 h-5 text-gray-500 group-hover:text-teal-400 transition-colors" />
+                    </button>
+
+                    <button 
                         onClick={() => onComplete('en')}
                         className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                     >

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { IconArrowLeft, IconPrinter, IconCheckCircle, IconBookOpen } from './Icons';
+import { useEffect } from 'react';
+import { IconArrowLeft, IconPrinter, IconBookOpen } from './Icons';
 import { LocalizedStudyContent, Language } from '../types';
 import { STUDY_CONTENTS, GENERIC_QUESTIONS, SCRIPTURES_LIST } from '../constants';
 
@@ -9,8 +9,6 @@ interface StudyPageProps {
   onBack: () => void;
   language: Language;
   setLanguage: (lang: Language) => void;
-  isCompleted: boolean;
-  onToggleCompletion: () => void;
 }
 
 const UI_LABELS = {
@@ -30,8 +28,6 @@ const UI_LABELS = {
     footerDesc: "Texto bíblico para fins de estudo e descoberta em comunidade.",
     openBible: "Abra sua Bíblia em",
     readInBible: "Este texto ainda não está disponível no app. Por favor, leia diretamente na sua Bíblia e use as perguntas abaixo para guiar o estudo.",
-    markComplete: "Marcar como Concluído",
-    completed: "Concluído"
   },
   en: {
     back: "Back",
@@ -49,8 +45,6 @@ const UI_LABELS = {
     footerDesc: "Bible text for study and discovery in community.",
     openBible: "Open your Bible to",
     readInBible: "This text is not yet available in the app. Please read directly from your Bible and use the questions below to guide the study.",
-    markComplete: "Mark as Complete",
-    completed: "Completed"
   },
   fr: {
     back: "Retour",
@@ -68,29 +62,32 @@ const UI_LABELS = {
     footerDesc: "Texte biblique pour l'étude et la découverte en communauté.",
     openBible: "Ouvrez votre Bible à",
     readInBible: "Ce texte n'est pas encore disponible dans l'application. Veuillez lire directement dans votre Bible et utiliser les questions ci-dessous pour guider l'étude.",
-    markComplete: "Marquer comme Terminé",
-    completed: "Terminé"
+  },
+  es: {
+    back: "Volver",
+    print: "Imprimir",
+    studyLabel: "Estudio Bíblico",
+    godTitle: "Sobre Dios",
+    godDesc: "¿Qué aprendemos sobre el carácter de Dios en esta historia?",
+    peopleTitle: "Sobre Personas",
+    peopleDesc: "¿Qué aprendemos sobre la naturaleza humana?",
+    obeyTitle: "Obediencia",
+    obeyDesc: "Si esto es verdad, ¿qué va a cambiar en mi vida esta semana?",
+    shareTitle: "Compartir",
+    shareDesc: "¿Con quién voy a compartir esta historia?",
+    footer: "DBS — Discípulos Haciendo Discípulos",
+    footerDesc: "Texto bíblico para fines de estudio y descubrimiento en comunidad.",
+    openBible: "Abre tu Biblia en",
+    readInBible: "Este texto aún no está disponible en la app. Por favor, lee directamente en tu Biblia y usa las preguntas de abajo para guiar el estudio.",
   }
 };
 
-const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage, isCompleted, onToggleCompletion }) => {
-  const [animateButton, setAnimateButton] = useState(false);
+const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage }) => {
   
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // Handle completion animation (button only)
-  useEffect(() => {
-    if (isCompleted) {
-        setAnimateButton(true);
-        const timer = setTimeout(() => {
-            setAnimateButton(false);
-        }, 800);
-        return () => clearTimeout(timer);
-    }
-  }, [isCompleted]);
 
   // Labels
   const labels = UI_LABELS[language];
@@ -142,23 +139,6 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
         
         {/* Header Actions */}
         <div className="flex items-center gap-3">
-            {/* Completion Button - Always Visible now */}
-            <button 
-                onClick={onToggleCompletion}
-                className={`flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full transition-all duration-300 border
-                ${isCompleted 
-                    ? 'bg-teal-50 text-teal-700 border-teal-200 ring-1 ring-teal-100' 
-                    : 'bg-white text-gray-400 border-gray-200 hover:border-gray-300 hover:text-gray-600'
-                }
-                ${animateButton ? 'scale-110' : 'scale-100'}
-                `}
-                >
-                <IconCheckCircle className={`w-4 h-4 transition-transform duration-300 ${isCompleted ? 'scale-110' : ''}`} />
-                <span className={`${isCompleted ? '' : 'hidden sm:inline'}`}>
-                    {isCompleted ? labels.completed : labels.markComplete}
-                </span>
-            </button>
-            
             <button 
                 onClick={() => window.print()}
                 className="flex items-center justify-center p-2 text-gray-400 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"

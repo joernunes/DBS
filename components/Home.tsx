@@ -25,10 +25,41 @@ const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
         fr: {
             text: "Car là où deux ou trois sont assemblés en mon nom, je suis au milieu d'eux.",
             reference: "Matthieu 18:20",
+        },
+        es: {
+            text: "Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos.",
+            reference: "Mateo 18:20",
         }
     };
     
     const verseOfDay = verses[language];
+
+    const getGroupLabel = () => {
+        switch(language) {
+            case 'fr': return 'Petit Groupe';
+            case 'en': return 'Small Group';
+            case 'es': return 'Grupo Pequeño';
+            default: return 'Pequeno Grupo';
+        }
+    };
+
+    const getResourcesLabel = () => {
+        switch(language) {
+            case 'fr': return 'Ressources';
+            case 'en': return 'Resources';
+            case 'es': return 'Recursos';
+            default: return 'Recursos';
+        }
+    };
+
+    const getLibraryLabel = () => {
+        switch(language) {
+            case 'fr': return 'Bibliothèque & Uploads';
+            case 'en': return 'Library & Uploads';
+            case 'es': return 'Biblioteca y Subidas';
+            default: return 'Biblioteca & Uploads';
+        }
+    };
 
     return (
         <section className="bg-gray-50 min-h-screen pb-24">
@@ -42,7 +73,7 @@ const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
                  />
                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10 pb-12">
                      <span className="text-white/90 uppercase tracking-widest text-xs font-bold mb-2 bg-white/20 inline-block px-2 py-1 rounded backdrop-blur-md w-fit">
-                        {language === 'fr' ? 'Petit Groupe' : language === 'en' ? 'Small Group' : 'Pequeno Grupo'}
+                        {getGroupLabel()}
                      </span>
                      <h1 className="text-3xl md:text-5xl font-bold text-white shadow-sm">
                         {ui.welcome}
@@ -159,10 +190,10 @@ const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-gray-900 text-lg mb-1">
-                                    {language === 'fr' ? 'Ressources' : language === 'en' ? 'Resources' : 'Recursos'}
+                                    {getResourcesLabel()}
                                 </h3>
                                 <p className="text-xs text-gray-500">
-                                     {language === 'fr' ? 'Bibliothèque & Uploads' : language === 'en' ? 'Library & Uploads' : 'Biblioteca & Uploads'}
+                                     {getLibraryLabel()}
                                 </p>
                             </div>
                         </div>

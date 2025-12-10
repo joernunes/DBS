@@ -63,6 +63,25 @@ export const HOME_UI: Record<string, HomeContent> = {
     ssTitle: "École du Sabbat",
     ssDesc: "N'oubliez pas d'étudier la leçon de cette semaine. Le thème est 'La Tragédie des Siècles'.",
     ssBtn: "Accéder à la Leçon"
+  },
+  es: {
+    title: "Estudios Bíblicos",
+    subtitle: "Guías para nuestras reuniones de Grupo Pequeño.",
+    facilitatorBtn: "Guía del Facilitador",
+    pathLabel: "Serie Actual: Encuentros con Jesús",
+    comingSoon: "Próximamente",
+    welcome: "Bienvenido al Grupo",
+    meetingInfo: "Próxima Reunión",
+    meetingDay: "Viernes a las 19:30",
+    location: "Casa de la Familia Silva",
+    confirmBtn: "Confirmar Asistencia",
+    verseTitle: "Versículo del Día",
+    nextStudy: "Preparar Estudio",
+    devotionalTitle: "Devocional",
+    devotionalDesc: "Conexión Diaria",
+    ssTitle: "Escuela Sabática",
+    ssDesc: "No olvides estudiar la lección de esta semana. El tema es 'El Gran Conflicto'.",
+    ssBtn: "Acceder a la Lección"
   }
 };
 
@@ -129,6 +148,27 @@ export const RESOURCES_UI: Record<string, ResourceUI> = {
         btnLogin: "Connexion",
         readerBack: "Fermer",
         downloadBtn: "Télécharger"
+    },
+    es: {
+        pageTitle: "Biblioteca y Recursos",
+        tabLibrary: "Colección",
+        tabUpload: "Subir",
+        tabAdmin: "Gestión",
+        uploadTitle: "Comparte un Libro o Estudio",
+        uploadDesc: "Tus archivos se añadirán a la estantería virtual tras su aprobación.",
+        formTitle: "Título de la Obra",
+        formDesc: "Breve Descripción",
+        formFile: "Archivo (PDF/Img)",
+        btnUpload: "Enviar a la Biblioteca",
+        emptyLibrary: "La biblioteca está vacía por el momento.",
+        emptyPending: "Ningún archivo pendiente.",
+        statusPending: "Pendiente",
+        statusApproved: "Disponible",
+        adminLogin: "Área de Líder",
+        adminPass: "Contraseña de Acceso",
+        btnLogin: "Entrar",
+        readerBack: "Cerrar",
+        downloadBtn: "Descargar"
     }
 };
 
@@ -348,6 +388,78 @@ export const MORNING_UI: Record<string, MorningUI> = {
         ]
       }
     ]
+  },
+  es: {
+    title: "Meditación Matutina",
+    subtitle: "Un momento diario para conectar tu corazón al corazón de Dios.",
+    guideBtn: "Cómo Meditar",
+    backBtn: "Volver",
+    listTitle: "Devocionales de la Semana",
+    guideTitle: "El Método de la Comunión Transformadora",
+    guideIntro: "Este método es una guía para transformar la formalidad religiosa en una experiencia viva e íntima con Dios. Usa este guion enfocándote en la calidad de la entrega y en la constancia del hábito.",
+    guidePhases: [
+      {
+        title: "Fase I: La Prioridad y la Preparación",
+        desc: "El fracaso espiritual se debe a la ausencia de este tiempo sagrado. El primer paso es establecer este tiempo como prioridad.",
+        steps: [
+          {
+            title: "1. Establece tu Santuario",
+            desc: "Encuentra un lugar donde no serás interrumpido, buscando el aislamiento intencional. El enemigo pondrá obstáculos para detenerte.",
+          },
+          {
+            title: "2. Define el Horario Sagrado",
+            desc: "Decide levantarte más temprano y apaga las pantallas. No es cuestión de tiempo, sino de prioridad.",
+            bullets: ["Consejo: Es mejor tener 15 minutos diarios que 2 horas una vez por semana. La inconstancia es la enemiga."]
+          }
+        ]
+      },
+      {
+        title: "Fase II: El Ritual de la Transformación",
+        desc: "Este es el momento en que te pones ante el Alfarero para ser remodelado.",
+        steps: [
+          {
+            title: "3. Lectura Reflexiva",
+            desc: "No leas como quien estudia para un examen, sino como quien recibe una carta de amor personal.",
+            bullets: ["Lee despacio, absorbiendo cada palabra.", "Pregúntate: '¿Qué me está diciendo Dios aquí?'", "Mejor entender profundamente un verso que leer mucho superficialmente."]
+          },
+          {
+            title: "4. Confesión Específica",
+            desc: "Abre tu corazón en confesión sincera. No escondas ni justifiques tus errores.",
+            bullets: ["Sé específico sobre tus pecados (orgullo, impaciencia, palabras duras).", "Muchos fracasan porque hacen confesiones genéricas."]
+          },
+          {
+            title: "5. Consagración Total",
+            desc: "Haz tu consagración diaria: entrégate completamente de nuevo.",
+            bullets: ["Pon tus planes, sueños y tiempo sobre el altar.", "No retengas pequeñas áreas, pues pueden convertirse en fortalezas para el enemigo."]
+          },
+          {
+            title: "6. Oración Abarcadora",
+            desc: "Presenta tus necesidades, pero no olvides interceder por los demás.",
+            bullets: ["Ora por los perdidos, por los que sufren y por tus enemigos.", "Evita oraciones egoístas centradas solo en deseos personales."]
+          },
+          {
+            title: "7. Silencio Intencional",
+            desc: "Practica el silencio ante Dios. Escucha y estate atento a las impresiones del Espíritu Santo.",
+            bullets: ["Dios raramente grita; Él susurra.", "Solo escucharás cuando hagas silencio."]
+          },
+          {
+            title: "8. Compromiso Diario",
+            desc: "Sal de la hora secreta con un propósito definido.",
+            bullets: ["Establece lo que Dios te pidió hacer: qué cambio de actitud, qué servicio prestar o qué hábito abandonar."]
+          }
+        ]
+      },
+      {
+        title: "Fase III: La Conexión Continua",
+        steps: [
+          {
+            title: "Caminar con Dios",
+            desc: "La comunión no se limita a la hora secreta. Lleva la presencia divina a cada actividad, conversación y decisión del día.",
+            bullets: ["Renovación Constante: El maná de ayer no sirve para hoy.", "Resultado: El corazón endurecido se ablanda y la mente confundida se aclara."]
+          }
+        ]
+      }
+    ]
   }
 };
 
@@ -366,6 +478,10 @@ export const MORNING_MEDITATIONS_LIST: MeditationItem[] = [
     fr: { 
         title: 'Commander à l\'Âme', 
         theme: 'Ce n\'est pas seulement remercier, c\'est ordonner à votre âme de sortir de l\'amnésie spirituelle. Chaque bienfait oublié est un terrain cédé à l\'ingratitude.' 
+    },
+    es: { 
+        title: 'Ordenando al Alma', 
+        theme: 'No es solo agradecer, es ordenar a tu alma que salga de la amnesia espiritual. Cada beneficio olvidado es un terreno cedido a la ingratitud.' 
     }
   },
   {
@@ -382,6 +498,10 @@ export const MORNING_MEDITATIONS_LIST: MeditationItem[] = [
     fr: { 
         title: 'L\'Échange Divin', 
         theme: 'L\'anxiété est un signal que vous portez ce qui appartient à Dieu. L\'échange est : votre inquiétude contre Sa paix, qui monte la garde sur votre esprit.' 
+    },
+    es: { 
+        title: 'El Intercambio Divino', 
+        theme: 'La ansiedad es una señal de que estás cargando lo que pertenece a Dios. El intercambio es: tu preocupación por Su paz, que monta guardia sobre tu mente.' 
     }
   },
   {
@@ -398,6 +518,10 @@ export const MORNING_MEDITATIONS_LIST: MeditationItem[] = [
     fr: { 
         title: 'La Réinitialisation', 
         theme: 'Même au milieu des décombres émotionnels, la miséricorde de Dieu remet l\'horloge à zéro à chaque aube. Sa fidélité ne dépend pas de votre stabilité.' 
+    },
+    es: { 
+        title: 'El Reinicio', 
+        theme: 'Incluso en medio de los escombros emocionales, la misericordia de Dios reinicia el reloj en cada amanecer. Su fidelidad no depende de tu estabilidad.' 
     }
   },
   {
@@ -414,6 +538,10 @@ export const MORNING_MEDITATIONS_LIST: MeditationItem[] = [
     fr: { 
         title: 'Reddition Intellectuelle', 
         theme: 'Faire confiance, c\'est admettre que votre vision est limitée. C\'est choisir Sa direction, même lorsque la carte n\'a aucun sens pour votre logique humaine.' 
+    },
+    es: { 
+        title: 'Rendición Intelectual', 
+        theme: 'Confiar es admitir que tu visión es limitada. Es elegir Su dirección, incluso cuando el mapa no tiene sentido para tu lógica humana.' 
     }
   },
   {
@@ -430,6 +558,10 @@ export const MORNING_MEDITATIONS_LIST: MeditationItem[] = [
     fr: { 
         title: 'Présence dans la Vallée', 
         theme: 'Le secret n\'est pas l\'absence de la vallée, mais la présence du Berger. La peur se dissipe non pas quand le problème disparaît, mais quand vous réalisez Qui est à vos côtés.' 
+    },
+    es: { 
+        title: 'Presencia en el Valle', 
+        theme: 'El secreto no es la ausencia del valle, sino la presencia del Pastor. El miedo se disipa no cuando el problema desaparece, sino cuando te das cuenta de Quién está a tu lado.' 
     }
   },
 ];
@@ -482,6 +614,22 @@ export const GENERIC_QUESTIONS: Record<string, GenericQuestions> = {
       example: "Sur la base de ce texte, que ferai-je cette semaine ?",
       share: "Avec qui partagerai-je cette histoire ?"
     }
+  },
+  es: {
+    god: [
+      "¿Qué dice este texto sobre Dios?",
+      "¿Qué atributos de Dios vemos aquí (Amor, Justicia, Poder)?",
+      "¿Qué hace o dice Él en el texto?"
+    ],
+    people: [
+      "¿Qué aprendemos sobre las personas?",
+      "¿Hay algún ejemplo a seguir o error a evitar?",
+      "¿Qué revela el texto sobre la naturaleza humana?"
+    ],
+    obedience: {
+      example: "Basado en este texto, ¿qué voy a hacer esta semana?",
+      share: "¿Con quién voy a compartir esta historia?"
+    }
   }
 };
 
@@ -490,61 +638,71 @@ export const SCRIPTURES_LIST: MultilingualScriptureItem[] = [
     reference: 'Gênesis 1:1-25',
     pt: { title: 'A Criação', theme: 'Deus Cria o Mundo' },
     en: { title: 'Creation', theme: 'God Creates the World' },
-    fr: { title: 'La Création', theme: 'Dieu Crée le Monde' }
+    fr: { title: 'La Création', theme: 'Dieu Crée le Monde' },
+    es: { title: 'La Creación', theme: 'Dios Crea el Mundo' }
   },
   { 
     reference: 'Gênesis 2:4-24',
     pt: { title: 'A Criação do Homem', theme: 'Relacionamento com Deus' },
     en: { title: 'Creation of Man', theme: 'Relationship with God' },
-    fr: { title: 'Création de l\'Homme', theme: 'Relation avec Dieu' }
+    fr: { title: 'Création de l\'Homme', theme: 'Relation avec Dieu' },
+    es: { title: 'La Creación del Hombre', theme: 'Relación con Dios' }
   },
   { 
     reference: 'Gênesis 3:1-13',
     pt: { title: 'A Desobediência', theme: 'A Queda da Humanidade' },
     en: { title: 'The Disobedience', theme: 'The Fall of Humanity' },
-    fr: { title: 'La Désobéissance', theme: 'La Chute de l\'Humanité' }
+    fr: { title: 'La Désobéissance', theme: 'La Chute de l\'Humanité' },
+    es: { title: 'La Desobediencia', theme: 'La Caída de la Humanidad' }
   },
   { 
     reference: 'Gênesis 12:1-8',
     pt: { title: 'A Promessa', theme: 'Deus Chama Abraão' },
     en: { title: 'The Promise', theme: 'God Calls Abraham' },
-    fr: { title: 'La Promesse', theme: 'Dieu Appelle Abraham' }
+    fr: { title: 'La Promesse', theme: 'Dieu Appelle Abraham' },
+    es: { title: 'La Promesa', theme: 'Dios Llama a Abraham' }
   },
   { 
     reference: 'Gênesis 22:1-19',
     pt: { title: 'O Sacrifício', theme: 'Deus Proverá' },
     en: { title: 'The Sacrifice', theme: 'God Will Provide' },
-    fr: { title: 'Le Sacrifice', theme: 'Dieu Pourvoira' }
+    fr: { title: 'Le Sacrifice', theme: 'Dieu Pourvoira' },
+    es: { title: 'El Sacrificio', theme: 'Dios Proveerá' }
   },
   { 
     reference: 'Lucas 15:11-32',
     pt: { title: 'O Filho Pródigo', theme: 'O Amor do Pai' },
     en: { title: 'The Prodigal Son', theme: 'The Father\'s Love' },
-    fr: { title: 'Le Fils Prodigue', theme: 'L\'Amour du Père' }
+    fr: { title: 'Le Fils Prodigue', theme: 'L\'Amour du Père' },
+    es: { title: 'El Hijo Pródigo', theme: 'El Amor del Padre' }
   },
   { 
     reference: 'Marcos 2:1-12',
     pt: { title: 'Jesus e o Paralítico', theme: 'Jesus Tem Autoridade' },
     en: { title: 'Jesus and the Paralytic', theme: 'Jesus Has Authority' },
-    fr: { title: 'Jésus et le Paralytique', theme: 'Jésus a de l\'Autorité' }
+    fr: { title: 'Jésus et le Paralytique', theme: 'Jésus a de l\'Autorité' },
+    es: { title: 'Jesús y el Paralítico', theme: 'Jesús Tiene Autoridad' }
   },
   { 
     reference: 'Mateus 14:22-33',
     pt: { title: 'Jesus Anda sobre as Águas', theme: 'Fé e Dúvida' },
     en: { title: 'Jesus Walks on Water', theme: 'Faith and Doubt' },
-    fr: { title: 'Jésus Marche sur l\'Eau', theme: 'Foi et Doute' }
+    fr: { title: 'Jésus Marche sur l\'Eau', theme: 'Foi et Doute' },
+    es: { title: 'Jesús Camina sobre el Agua', theme: 'Fe y Duda' }
   },
   { 
     reference: 'Lucas 23:32-49',
     pt: { title: 'A Cruz', theme: 'O Preço do Perdão' },
     en: { title: 'The Cross', theme: 'The Price of Forgiveness' },
-    fr: { title: 'La Croix', theme: 'Le Prix du Pardon' }
+    fr: { title: 'La Croix', theme: 'Le Prix du Pardon' },
+    es: { title: 'La Cruz', theme: 'El Precio del Perdón' }
   },
   { 
     reference: 'Lucas 24:1-12',
     pt: { title: 'A Ressurreição', theme: 'A Morte Vencida' },
     en: { title: 'The Resurrection', theme: 'Death Defeated' },
-    fr: { title: 'La Résurrection', theme: 'La Mort Vaincue' }
+    fr: { title: 'La Résurrection', theme: 'La Mort Vaincue' },
+    es: { title: 'La Resurrección', theme: 'La Muerte Vencida' }
   },
 ];
 
@@ -726,6 +884,65 @@ export const STUDY_CONTENTS: Record<string, MultilingualStudyContent> = {
           share: "Je vais dire à mon ami que Jésus a le pouvoir de pardonner ses erreurs passées."
         }
       }
+    },
+    es: {
+      title: "Jesús y el Paralítico",
+      bibleText: [
+        {
+          verses: [
+            { num: 1, text: "Unos días después, cuando Jesús entró de nuevo en Capernaúm, la gente se enteró de que estaba en casa." },
+            { num: 2, text: "Se reunieron tantos que no quedaba sitio ni siquiera frente a la puerta, y él les predicaba la palabra." }
+          ]
+        },
+        {
+          verses: [
+            { num: 3, text: "Entonces llegaron cuatro hombres que le llevaban un paralítico." },
+            { num: 4, text: "Como no podían acercarlo a Jesús por causa de la multitud, quitaron parte del techo encima de donde estaba Jesús y, luego de hacer una abertura, bajaron la camilla en la que estaba acostado el paralítico." }
+          ]
+        },
+        {
+          verses: [
+            { num: 5, text: "Al ver la fe de ellos, Jesús le dijo al paralítico: —Hijo, tus pecados quedan perdonados." }
+          ]
+        },
+        {
+          verses: [
+            { num: 6, text: "Estaban sentados allí algunos maestros de la ley, que pensaban en su interior:" },
+            { num: 7, text: "«¿Por qué habla este así? ¡Está blasfemando! ¿Quién puede perdonar pecados sino solo Dios?»" }
+          ]
+        },
+        {
+          verses: [
+            { num: 8, text: "En ese mismo instante supo Jesús en su espíritu lo que ellos estaban pensando. —¿Por qué razonan así? —les dijo—." },
+            { num: 9, text: "¿Qué es más fácil decirle al paralítico: “Tus pecados quedan perdonados”, o decirle: “Levántate, toma tu camilla y anda”?" },
+            { num: 10, text: "Pues para que sepan que el Hijo del hombre tiene autoridad en la tierra para perdonar pecados —se dirigió entonces al paralítico—:" },
+            { num: 11, text: "A ti te digo, levántate, toma tu camilla y vete a tu casa." }
+          ]
+        },
+        {
+          verses: [
+            { num: 12, text: "Él se levantó, tomó su camilla en seguida y salió caminando a la vista de todos. Todos se quedaron asombrados y comenzaron a alabar a Dios. —Jamás hemos visto cosa igual —decían." }
+          ]
+        }
+      ],
+      quadrants: {
+        god: [
+          "Jesús tiene autoridad para perdonar pecados (es Divino).",
+          "Él conoce los pensamientos y corazones de las personas.",
+          "Él valora el perdón espiritual por encima de la curación física.",
+          "Él honra la fe que se demuestra con acciones."
+        ],
+        people: [
+          "Necesitamos amigos que nos lleven a Jesús.",
+          "Los líderes religiosos pueden ser espiritualmente ciegos.",
+          "Nuestra mayor necesidad es el perdón, no solo la curación física.",
+          "Podemos ser críticos en nuestros pensamientos."
+        ],
+        obedience: {
+          example: "Voy a dejar de juzgar a las personas por su apariencia.",
+          share: "Voy a contarle a mi amigo que Jesús tiene poder para perdonar sus errores pasados."
+        }
+      }
     }
   },
   'Mateus 14:22-33': {
@@ -891,6 +1108,61 @@ export const STUDY_CONTENTS: Record<string, MultilingualStudyContent> = {
         obedience: {
           example: "Je vais réserver 15 minutes par jour pour prier seul comme Jésus l'a fait.",
           share: "Je vais encourager ma sœur qui a peur à faire confiance à Jésus."
+        }
+      }
+    },
+    es: {
+      title: "Jesús Camina sobre el Agua",
+      bibleText: [
+         {
+           verses: [
+             { num: 22, text: "En seguida Jesús hizo que los discípulos subieran a la barca y se adelantaran al otro lado mientras él despedía a la multitud." },
+             { num: 23, text: "Después de despedir a la gente, subió a la montaña para orar a solas. Al anochecer, estaba allí él solo," },
+           ]
+         },
+         {
+           verses: [
+             { num: 24, text: "y la barca ya estaba bastante lejos de la tierra, zarandeada por las olas, porque el viento le era contrario." },
+             { num: 25, text: "En la madrugada, Jesús se acercó a ellos caminando sobre el lago." },
+             { num: 26, text: "Cuando los discípulos lo vieron caminando sobre el agua, quedaron aterrados. —¡Es un fantasma! —gritaron de miedo." }
+           ]
+         },
+         {
+           verses: [
+             { num: 27, text: "Pero Jesús les dijo en seguida: —¡Cálmense! Soy yo. No tengan miedo." },
+           ]
+         },
+         {
+           verses: [
+             { num: 28, text: "—Señor, si eres tú —respondió Pedro—, mándame que vaya a ti sobre el agua." },
+             { num: 29, text: "—Ven —dijo Jesús. Pedro bajó de la barca y caminó sobre el agua en dirección a Jesús." },
+             { num: 30, text: "Pero, al sentir el viento fuerte, tuvo miedo y comenzó a hundirse. Entonces gritó: —¡Señor, sálvame!" }
+           ]
+         },
+         {
+           verses: [
+             { num: 31, text: "En seguida Jesús le tendió la mano y, sujetándolo, lo reprendió: —¡Hombre de poca fe! ¿Por qué dudaste?" },
+             { num: 32, text: "Cuando subieron a la barca, se calmó el viento." },
+             { num: 33, text: "Y los que estaban en la barca lo adoraron diciendo: —Verdaderamente tú eres el Hijo de Dios." }
+           ]
+         }
+      ],
+      quadrants: {
+        god: [
+          "Jesús tiene poder sobre la naturaleza (camina sobre el agua).",
+          "Él ora y busca tiempo a solas con el Padre.",
+          "Él nos socorre cuando gritamos por ayuda.",
+          "Él espera que tengamos fe en Él."
+        ],
+        people: [
+          "Sentimos miedo ante lo desconocido.",
+          "Podemos tener fe para empezar, pero la duda puede hacernos hundir.",
+          "Necesitamos mantener los ojos en Jesús, no en las circunstancias.",
+          "Debemos adorar a Jesús."
+        ],
+        obedience: {
+          example: "Voy a apartar 15 minutos diarios para orar a solas como hizo Jesús.",
+          share: "Voy a animar a mi hermana que tiene miedo a confiar en Jesús."
         }
       }
     }

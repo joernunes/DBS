@@ -17,32 +17,18 @@ function App() {
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
   const [viewMode, setViewMode] = useState<ViewMode>('home');
-  const [isOnboarding, setIsOnboarding] = useState(true); // State for onboarding
   
-  // Initialize language
-  const [language, setLanguageState] = useState<Language>('pt');
-
-  // Check LocalStorage on Mount for Onboarding status and Language
-  useEffect(() => {
+  // 1. Lazy Initialization para evitar Flash de Conteúdo
+  // O estado é calculado ANTES do primeiro render
+  const [isOnboarding, setIsOnboarding] = useState(() => {
       const completed = localStorage.getItem('dbs_onboarding_complete');
-      const savedLang = localStorage.getItem('dbs_language');
-
-      if (completed === 'true' && savedLang) {
-          setIsOnboarding(false);
-          setLanguageState(savedLang as Language);
-      } else {
-          setIsOnboarding(true);
-      }
-  }, []);
-
-  // Initialize completed studies from localStorage
-  const [completedStudies, setCompletedStudies] = useState<string[]>(() => {
-    try {
-        const saved = localStorage.getItem('dbs_completed_studies');
-        return saved ? JSON.parse(saved) : [];
-    } catch (e) {
-        return [];
-    }
+      return completed !== 'true';
+  });
+  
+  // Initialize language lazily as well
+  const [language, setLanguageState] = useState<Language>(() => {
+      const saved = localStorage.getItem('dbs_language');
+      return (saved as Language) || 'pt';
   });
 
   const setLanguage = (lang: Language) => {
@@ -54,18 +40,6 @@ function App() {
       setLanguage(selectedLang);
       localStorage.setItem('dbs_onboarding_complete', 'true');
       setIsOnboarding(false);
-  };
-
-  const toggleStudyCompletion = (reference: string) => {
-    setCompletedStudies(prev => {
-        const isCompleted = prev.includes(reference);
-        const newCompleted = isCompleted 
-            ? prev.filter(ref => ref !== reference)
-            : [...prev, reference];
-        
-        localStorage.setItem('dbs_completed_studies', JSON.stringify(newCompleted));
-        return newCompleted;
-    });
   };
 
   // Manipular o botão "Voltar" do navegador (History API)
@@ -124,8 +98,6 @@ function App() {
         onBack={handleBack} 
         language={language}
         setLanguage={setLanguage}
-        isCompleted={completedStudies.includes(activeStudy.reference)}
-        onToggleCompletion={() => toggleStudyCompletion(activeStudy.reference)}
       />
     );
   }
@@ -157,7 +129,6 @@ function App() {
              onOpenGuide={handleOpenGuide}
              language={language}
              setLanguage={setLanguage}
-             completedStudies={completedStudies}
            />
         )}
         {viewMode === 'meditation' && (
