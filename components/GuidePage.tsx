@@ -211,28 +211,6 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
               <IconArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span className="hidden sm:inline">{t.back}</span>
             </button>
-            
-            {/* Language Switcher */}
-            <div className="flex bg-gray-100 rounded-lg p-1">
-                <button 
-                    onClick={() => setLanguage('pt')}
-                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'pt' ? 'bg-white shadow-sm text-teal-700' : 'text-gray-500 hover:text-gray-900'}`}
-                >
-                    PT
-                </button>
-                <button 
-                    onClick={() => setLanguage('en')}
-                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'en' ? 'bg-white shadow-sm text-teal-700' : 'text-gray-500 hover:text-gray-900'}`}
-                >
-                    EN
-                </button>
-                <button 
-                    onClick={() => setLanguage('fr')}
-                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'fr' ? 'bg-white shadow-sm text-teal-700' : 'text-gray-500 hover:text-gray-900'}`}
-                >
-                    FR
-                </button>
-            </div>
         </div>
 
         <div className="font-bold text-gray-900 tracking-tight text-sm md:text-base hidden md:block uppercase">{t.headerTitle}</div>

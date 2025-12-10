@@ -27,31 +27,7 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
 
   return (
     <section id="scriptures" className="py-12 md:py-20 bg-white min-h-screen">
-      <div className="container mx-auto px-4 pb-24"> {/* Added padding bottom for Dynamic Island */}
-        
-        {/* Language Switcher - Floating Top LEFT (Updated) */}
-        <div className="absolute top-4 left-4 z-50">
-             <div className="flex bg-gray-100 rounded-lg p-1 shadow-sm">
-                <button 
-                    onClick={() => setLanguage('pt')}
-                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'pt' ? 'bg-white shadow-sm text-teal-700' : 'text-gray-500 hover:text-gray-900'}`}
-                >
-                    PT
-                </button>
-                <button 
-                    onClick={() => setLanguage('en')}
-                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'en' ? 'bg-white shadow-sm text-teal-700' : 'text-gray-500 hover:text-gray-900'}`}
-                >
-                    EN
-                </button>
-                <button 
-                    onClick={() => setLanguage('fr')}
-                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'fr' ? 'bg-white shadow-sm text-teal-700' : 'text-gray-500 hover:text-gray-900'}`}
-                >
-                    FR
-                </button>
-            </div>
-        </div>
+      <div className="container mx-auto px-4 pb-24">
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12 mt-8">
@@ -104,7 +80,6 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
                     </div>
                     
                     <div>
-                      {/* Removed line-through and gray text color for completed items */}
                       <h4 className={`text-lg font-bold group-hover:text-teal-700 transition-colors flex items-center gap-2 text-gray-900`}>
                         {localizedItem.title}
                       </h4>

@@ -1,4 +1,4 @@
-import { MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions, MorningUI, MeditationItem } from './types';
+import { MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions, MorningUI, MeditationItem, ResourceUI } from './types';
 
 export const NAV_LINKS = [
   { label: 'O que é', href: 'what-is' },
@@ -8,26 +8,128 @@ export const NAV_LINKS = [
 
 export const HOME_UI: Record<string, HomeContent> = {
   pt: {
-    title: "DBS",
-    subtitle: "Um guia prático para ler a Bíblia e descobrir a verdade em comunidade.",
+    title: "Estudos Bíblicos",
+    subtitle: "Roteiros para nossos encontros de Pequeno Grupo.",
     facilitatorBtn: "Guia do Facilitador",
-    pathLabel: "Caminho de Descoberta",
-    comingSoon: "Em breve"
+    pathLabel: "Série Atual: Encontros com Jesus",
+    comingSoon: "Em breve",
+    welcome: "Bem-vindo ao PG",
+    meetingInfo: "Próximo Encontro",
+    meetingDay: "Sexta-feira às 19:30",
+    location: "Casa da Família Silva",
+    confirmBtn: "Confirmar Presença",
+    verseTitle: "Verso do Dia",
+    nextStudy: "Preparar Estudo",
+    devotionalTitle: "Devocional",
+    devotionalDesc: "Conexão Diária",
+    ssTitle: "Escola Sabatina",
+    ssDesc: "Não esqueça de estudar a lição desta semana. O tema é 'O Grande Conflito'.",
+    ssBtn: "Acessar Lição"
   },
   en: {
-    title: "DBS",
-    subtitle: "A practical guide to reading the Bible and discovering truth in community.",
+    title: "Bible Studies",
+    subtitle: "Guides for our Small Group meetings.",
     facilitatorBtn: "Facilitator Guide",
-    pathLabel: "Discovery Path",
-    comingSoon: "Coming soon"
+    pathLabel: "Current Series: Encounters with Jesus",
+    comingSoon: "Coming soon",
+    welcome: "Welcome to the Group",
+    meetingInfo: "Next Meeting",
+    meetingDay: "Friday at 7:30 PM",
+    location: "Silva Family Home",
+    confirmBtn: "Confirm Attendance",
+    verseTitle: "Verse of the Day",
+    nextStudy: "Prepare Study",
+    devotionalTitle: "Devotional",
+    devotionalDesc: "Daily Connection",
+    ssTitle: "Sabbath School",
+    ssDesc: "Don't forget to study this week's lesson. The theme is 'The Great Controversy'.",
+    ssBtn: "Access Lesson"
   },
   fr: {
-    title: "DBS",
-    subtitle: "Un guide pratique pour lire la Bible et découvrir la vérité en communauté.",
+    title: "Études Bibliques",
+    subtitle: "Guides pour nos réunions de Petit Groupe.",
     facilitatorBtn: "Guide du Facilitateur",
-    pathLabel: "Parcours de Découverte",
-    comingSoon: "Bientôt disponible"
+    pathLabel: "Série Actuelle : Rencontres avec Jésus",
+    comingSoon: "Bientôt disponible",
+    welcome: "Bienvenue au Groupe",
+    meetingInfo: "Prochaine Réunion",
+    meetingDay: "Vendredi à 19h30",
+    location: "Chez la famille Silva",
+    confirmBtn: "Confirmer la Présence",
+    verseTitle: "Verset du Jour",
+    nextStudy: "Préparer l'Étude",
+    devotionalTitle: "Dévotion",
+    devotionalDesc: "Connexion Quotidienne",
+    ssTitle: "École du Sabbat",
+    ssDesc: "N'oubliez pas d'étudier la leçon de cette semaine. Le thème est 'La Tragédie des Siècles'.",
+    ssBtn: "Accéder à la Leçon"
   }
+};
+
+export const RESOURCES_UI: Record<string, ResourceUI> = {
+    pt: {
+        pageTitle: "Biblioteca & Recursos",
+        tabLibrary: "Acervo",
+        tabUpload: "Enviar",
+        tabAdmin: "Gestão",
+        uploadTitle: "Compartilhe um Livro ou Estudo",
+        uploadDesc: "Seus arquivos serão adicionados à estante virtual após aprovação.",
+        formTitle: "Título da Obra",
+        formDesc: "Breve Descrição",
+        formFile: "Arquivo (PDF/Img)",
+        btnUpload: "Enviar para Biblioteca",
+        emptyLibrary: "A biblioteca está vazia no momento.",
+        emptyPending: "Nenhum arquivo pendente.",
+        statusPending: "Pendente",
+        statusApproved: "Disponível",
+        adminLogin: "Área do Líder",
+        adminPass: "Senha de Acesso",
+        btnLogin: "Entrar",
+        readerBack: "Fechar",
+        downloadBtn: "Baixar"
+    },
+    en: {
+        pageTitle: "Library & Resources",
+        tabLibrary: "Bookshelf",
+        tabUpload: "Upload",
+        tabAdmin: "Admin",
+        uploadTitle: "Share a Book or Study",
+        uploadDesc: "Your files will be added to the virtual bookshelf after approval.",
+        formTitle: "Title of Work",
+        formDesc: "Short Description",
+        formFile: "File (PDF/Img)",
+        btnUpload: "Submit to Library",
+        emptyLibrary: "The library is currently empty.",
+        emptyPending: "No files pending.",
+        statusPending: "Pending",
+        statusApproved: "Available",
+        adminLogin: "Leader Area",
+        adminPass: "Access Password",
+        btnLogin: "Login",
+        readerBack: "Close",
+        downloadBtn: "Download"
+    },
+    fr: {
+        pageTitle: "Bibliothèque & Ressources",
+        tabLibrary: "Rayonnage",
+        tabUpload: "Envoyer",
+        tabAdmin: "Gestion",
+        uploadTitle: "Partager un Livre ou une Étude",
+        uploadDesc: "Vos fichiers seront ajoutés à l'étagère virtuelle après approbation.",
+        formTitle: "Titre de l'Œuvre",
+        formDesc: "Brève Description",
+        formFile: "Fichier (PDF/Img)",
+        btnUpload: "Soumettre à la Bibliothèque",
+        emptyLibrary: "La bibliothèque est vide pour le moment.",
+        emptyPending: "Aucun fichier en attente.",
+        statusPending: "En attente",
+        statusApproved: "Disponible",
+        adminLogin: "Espace Responsable",
+        adminPass: "Mot de passe",
+        btnLogin: "Connexion",
+        readerBack: "Fermer",
+        downloadBtn: "Télécharger"
+    }
 };
 
 export const MORNING_UI: Record<string, MorningUI> = {
@@ -36,7 +138,7 @@ export const MORNING_UI: Record<string, MorningUI> = {
     subtitle: "Um momento diário para conectar seu coração ao coração de Deus.",
     guideBtn: "Como Meditar",
     backBtn: "Voltar",
-    listTitle: "Devocionais Diários",
+    listTitle: "Devocionais da Semana",
     guideTitle: "O Método da Comunhão Transformadora",
     guideIntro: "Este método é um guia para transformar a formalidade religiosa em uma experiência viva e íntima com Deus. Use este roteiro focando na qualidade da entrega e na constância do hábito.",
     guidePhases: [
@@ -108,7 +210,7 @@ export const MORNING_UI: Record<string, MorningUI> = {
     subtitle: "A daily moment to connect your heart to God's heart.",
     guideBtn: "How to Meditate",
     backBtn: "Back",
-    listTitle: "Daily Devotionals",
+    listTitle: "Weekly Devotionals",
     guideTitle: "The Transformational Communion Method",
     guideIntro: "This method is a guide to transform religious formality into a living, intimate experience with God. Use this script focusing on the quality of surrender and the consistency of the habit.",
     guidePhases: [
@@ -180,7 +282,7 @@ export const MORNING_UI: Record<string, MorningUI> = {
     subtitle: "Un moment quotidien pour connecter votre cœur au cœur de Dieu.",
     guideBtn: "Comment Méditer",
     backBtn: "Retour",
-    listTitle: "Dévotions Quotidiennes",
+    listTitle: "Dévotions de la Semaine",
     guideTitle: "La Méthode de Communion Transformationnelle",
     guideIntro: "Cette méthode est un guide pour transformer la formalité religieuse en une expérience vivante et intime avec Dieu. Utilisez ce scénario en vous concentrant sur la qualité de l'abandon et la constance de l'habitude.",
     guidePhases: [

@@ -295,30 +295,6 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
         <section className="py-12 md:py-20 min-h-screen bg-white relative">
             <div className="container mx-auto px-4 pb-24">
                 
-                 {/* Language Switcher - Floating Top LEFT (Updated) */}
-                 <div className="absolute top-4 left-4 z-50 select-none">
-                    <div className="flex bg-gray-100 rounded-lg p-1 shadow-sm">
-                        <button 
-                            onClick={() => setLanguage('pt')}
-                            className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'pt' ? 'bg-white shadow-sm text-orange-600' : 'text-gray-500 hover:text-gray-900'}`}
-                        >
-                            PT
-                        </button>
-                        <button 
-                            onClick={() => setLanguage('en')}
-                            className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'en' ? 'bg-white shadow-sm text-orange-600' : 'text-gray-500 hover:text-gray-900'}`}
-                        >
-                            EN
-                        </button>
-                        <button 
-                            onClick={() => setLanguage('fr')}
-                            className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${language === 'fr' ? 'bg-white shadow-sm text-orange-600' : 'text-gray-500 hover:text-gray-900'}`}
-                        >
-                            FR
-                        </button>
-                    </div>
-                </div>
-
                 {/* SACRED TIME TIMER (POMODORO) - Fixed Top RIGHT (Updated) - WHITE PILL */}
                 <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-top duration-500 group select-none">
                     <div className={`flex items-center gap-0 rounded-full transition-all duration-300 bg-white/90 backdrop-blur-sm border border-gray-200 shadow-sm ${timerFinished ? 'text-green-600 bg-green-50 border-green-200' : ''}`}>

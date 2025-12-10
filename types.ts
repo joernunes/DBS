@@ -45,6 +45,19 @@ export interface HomeContent {
   facilitatorBtn: string;
   pathLabel: string;
   comingSoon: string;
+  // New Home Fields
+  welcome: string;
+  meetingInfo: string;
+  meetingDay: string;
+  location: string;
+  confirmBtn: string;
+  verseTitle: string;
+  nextStudy: string;
+  devotionalTitle: string;
+  devotionalDesc: string;
+  ssTitle: string;
+  ssDesc: string;
+  ssBtn: string;
 }
 
 export interface LocalizedScriptureItem {
@@ -98,4 +111,42 @@ export interface MeditationItem {
   pt: { title: string; theme: string };
   en: { title: string; theme: string };
   fr: { title: string; theme: string };
+}
+
+// Resource / File Upload Types
+export interface Resource {
+    id: string;
+    title: string;
+    description: string;
+    date: string;
+    status: 'pending' | 'approved' | 'rejected';
+    fileName: string;
+    uploader: string;
+    // New fields for Library View & Real Files
+    coverColor?: string; // Tailwind class e.g. 'bg-blue-600'
+    category?: 'book' | 'sheet' | 'image';
+    fileUrl?: string; // Real URL or Base64 Data
+    fileType?: string; // Mime type e.g. 'application/pdf'
+}
+
+export interface ResourceUI {
+    pageTitle: string;
+    tabLibrary: string;
+    tabUpload: string;
+    tabAdmin: string;
+    uploadTitle: string;
+    uploadDesc: string;
+    formTitle: string;
+    formDesc: string;
+    formFile: string;
+    btnUpload: string;
+    emptyLibrary: string;
+    emptyPending: string;
+    statusPending: string;
+    statusApproved: string;
+    adminLogin: string;
+    adminPass: string;
+    btnLogin: string;
+    readerBack: string; // New UI string
+    downloadBtn: string;
 }
