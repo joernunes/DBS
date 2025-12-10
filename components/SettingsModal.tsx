@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IconX, IconCheckCircle, IconBookOpen } from './Icons';
 import { Language, FontSize } from '../types';
 
@@ -16,6 +16,19 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   currentLanguage, onLanguageChange,
   currentFontSize, onFontSizeChange
 }) => {
+  
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const languages: { code: Language; label: string; flag: string }[] = [
@@ -55,8 +68,11 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
              </p>
              <div className="grid grid-cols-2 gap-3">
                  <button
-                    onClick={() => onFontSizeChange('normal')}
-                    className={`p-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all ${
+                    onClick={() => {
+                        onFontSizeChange('normal');
+                        onClose();
+                    }}
+                    className={`p-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all active:scale-95 ${
                         currentFontSize === 'normal' 
                         ? 'bg-indigo-50 border-indigo-500 text-indigo-700 ring-1 ring-indigo-500' 
                         : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
@@ -67,8 +83,11 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                  </button>
 
                  <button
-                    onClick={() => onFontSizeChange('large')}
-                    className={`p-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all ${
+                    onClick={() => {
+                        onFontSizeChange('large');
+                        onClose();
+                    }}
+                    className={`p-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all active:scale-95 ${
                         currentFontSize === 'large' 
                         ? 'bg-indigo-50 border-indigo-500 text-indigo-700 ring-1 ring-indigo-500' 
                         : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
@@ -94,7 +113,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                   key={lang.code}
                   onClick={() => {
                     onLanguageChange(lang.code);
-                    // Optional: Close on select or let user close manually
+                    onClose();
                   }}
                   className={`w-full flex items-center justify-between p-3.5 rounded-xl border transition-all active:scale-[0.98] ${
                     currentLanguage === lang.code 
@@ -118,7 +137,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
         </div>
 
         <div className="mt-auto pt-2 text-center text-xs text-gray-400">
-          DBS Simples v1.1
+          DBS Simples v1.2
         </div>
       </div>
     </div>
