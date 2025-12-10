@@ -325,7 +325,7 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
     );
 
     return (
-        <section className="py-12 md:py-20 min-h-screen bg-white relative">
+        <section className="py-12 md:py-20 min-h-screen bg-white relative select-none">
             <div className="container mx-auto px-4 pb-24">
                 
                 {/* SACRED TIME TIMER (POMODORO) - Fixed Top RIGHT (Updated) - WHITE PILL */}

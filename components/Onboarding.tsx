@@ -8,7 +8,7 @@ interface OnboardingProps {
 
 const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
     return (
-        <div className="fixed inset-0 z-50 bg-gray-900 flex flex-col items-center justify-center overflow-hidden">
+        <div className="fixed inset-0 z-50 bg-gray-900 flex flex-col items-center justify-center overflow-hidden select-none">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img 

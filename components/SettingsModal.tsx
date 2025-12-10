@@ -39,7 +39,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   ];
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end md:items-center justify-center sm:p-4">
+    <div className="fixed inset-0 z-[100] flex items-end md:items-center justify-center sm:p-4 select-none">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"

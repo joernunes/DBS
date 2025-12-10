@@ -104,6 +104,7 @@ function App() {
       else if (hash === '' || hash === 'home') {
         setViewModeState('home');
         setActiveStudy(null);
+        setActiveStudy(null);
         setIsGuideOpen(false);
       }
       // Nota: Se for 'estudo' ou 'guia', não fazemos nada aqui pois
@@ -236,7 +237,7 @@ function App() {
 
       {/* Navigation Bar (Bottom) */}
       {viewMode !== 'resources' && (
-        <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
+        <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none select-none">
             <div className="bg-gray-900/90 backdrop-blur-xl text-white p-1.5 rounded-full shadow-2xl flex items-center gap-1 pointer-events-auto transform transition-all hover:scale-105 border border-white/10">
                 
                 <button 

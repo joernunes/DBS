@@ -185,7 +185,7 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ language, setLanguage, on
     }
 
     return (
-        <div className="min-h-screen bg-white pb-20">
+        <div className="min-h-screen bg-white pb-20 select-none">
              {/* Header */}
              <div className="bg-white border-b border-gray-100 p-4 sticky top-0 z-40 flex items-center justify-between">
                 <button onClick={onBack} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors">

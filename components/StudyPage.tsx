@@ -128,7 +128,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
   }
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 pb-10 relative">
+    <div className="min-h-screen bg-white font-sans text-gray-900 pb-10 relative select-none">
       
       {/* Navigation Bar - Sticky Top */}
       <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100 p-4 sticky top-0 z-50 flex justify-between items-center print:hidden">
@@ -177,7 +177,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
         <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
             <div className="max-w-3xl mx-auto">
                 {/* Added key to force update on language change */}
-                <div key={`${language}-text`} className={`font-serif text-gray-800 antialiased space-y-8 ${textSizeClass}`}>
+                <div key={`${language}-text`} className={`font-serif text-gray-800 antialiased space-y-8 ${textSizeClass} select-text`}>
                   {content.bibleText.length > 0 ? (
                     // RENDER FULL TEXT
                     content.bibleText.map((paragraph, index) => (

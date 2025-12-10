@@ -263,7 +263,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage, fo
   const bodyClass = fontSize === 'large' ? 'text-xl leading-relaxed' : 'text-lg leading-relaxed';
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900">
+    <div className="min-h-screen bg-white font-sans text-gray-900 select-none">
       
       {/* Navigation Bar - Sticky Top */}
       <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100 p-4 sticky top-0 z-50 flex justify-between items-center print:hidden">

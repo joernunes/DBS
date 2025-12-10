@@ -297,7 +297,7 @@ const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
     };
 
     return (
-        <section className="bg-gray-50 min-h-screen pb-24">
+        <section className="bg-gray-50 min-h-screen pb-24 select-none">
             {/* Header Hero */}
             <div className="relative h-64 md:h-80 overflow-hidden">
                  <div className="absolute inset-0 bg-gray-900/40 z-10"></div>

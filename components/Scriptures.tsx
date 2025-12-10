@@ -25,7 +25,7 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
   };
 
   return (
-    <section id="scriptures" className="py-12 md:py-20 bg-white min-h-screen">
+    <section id="scriptures" className="py-12 md:py-20 bg-white min-h-screen select-none">
       <div className="container mx-auto px-4 pb-24">
         
         {/* Header */}
