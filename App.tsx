@@ -16,16 +16,30 @@ function App() {
   const [activeStudy, setActiveStudy] = useState<Scripture | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
-  const [viewMode, setViewMode] = useState<ViewMode>('home');
-  
-  // 1. Lazy Initialization para evitar Flash de Conteúdo
-  // O estado é calculado ANTES do primeiro render
+
+  // 1. Lazy Initialization para Onboarding
   const [isOnboarding, setIsOnboarding] = useState(() => {
       const completed = localStorage.getItem('dbs_onboarding_complete');
       return completed !== 'true';
   });
   
-  // Initialize language lazily as well
+  // 2. Roteamento: Determinar ViewMode inicial baseado na URL (Hash)
+  // Isso garante que ao recarregar em /#dbs, o usuário permaneça no DBS
+  const getInitialViewMode = (): ViewMode => {
+      const hash = window.location.hash.replace('#', '');
+      if (['dbs', 'meditation', 'resources'].includes(hash)) {
+          return hash as ViewMode;
+      }
+      // Se recarregar em uma sub-rota como #estudo ou #guia, volta para a lista (dbs)
+      if (hash === 'estudo' || hash === 'guia') {
+          return 'dbs';
+      }
+      return 'home';
+  };
+
+  const [viewMode, setViewModeState] = useState<ViewMode>(getInitialViewMode);
+  
+  // Initialize language lazily
   const [language, setLanguageState] = useState<Language>(() => {
       const saved = localStorage.getItem('dbs_language');
       return (saved as Language) || 'pt';
@@ -42,24 +56,72 @@ function App() {
       setIsOnboarding(false);
   };
 
-  // Manipular o botão "Voltar" do navegador (History API)
+  // Função centralizada de navegação que atualiza URL e Estado
+  const navigateTo = (mode: ViewMode) => {
+      setViewModeState(mode);
+      setActiveStudy(null);
+      setIsGuideOpen(false);
+      window.scrollTo(0, 0);
+      
+      const newHash = mode === 'home' ? '' : `#${mode}`;
+      
+      // Atualiza a URL sem recarregar a página
+      if (window.location.hash !== newHash) {
+          // Se for home, usamos pushState com url limpa para remover o #
+          if (mode === 'home') {
+             window.history.pushState(null, '', window.location.pathname);
+          } else {
+             window.history.pushState(null, '', newHash);
+          }
+      }
+  };
+
+  // Monitorar Botão Voltar do Navegador e Mudanças manuais na URL
   useEffect(() => {
-    const handlePopState = (event: PopStateEvent) => {
-      if (!event.state) {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      
+      // Se a hash for uma das views principais, navega para ela
+      if (['dbs', 'meditation', 'resources'].includes(hash)) {
+        setViewModeState(hash as ViewMode);
         setActiveStudy(null);
         setIsGuideOpen(false);
       } 
-      else if (event.state.page === 'home') {
+      // Se a hash estiver vazia ou for home
+      else if (hash === '' || hash === 'home') {
+        setViewModeState('home');
         setActiveStudy(null);
         setIsGuideOpen(false);
       }
+      // Nota: Se for 'estudo' ou 'guia', não fazemos nada aqui pois
+      // o estado activeStudy/isGuideOpen controla a view, e o popstate abaixo cuida do fechamento
+    };
+
+    // Popstate lida com o botão "Voltar" do navegador
+    const handlePopState = (event: PopStateEvent) => {
+        // Se o usuário clicar em voltar e estava em um estudo (#estudo)
+        // e agora a URL mudou (ex: voltou para #dbs), precisamos fechar o estudo
+        const hash = window.location.hash;
+        
+        if (!hash.includes('estudo') && activeStudy) {
+            setActiveStudy(null);
+        }
+        if (!hash.includes('guia') && isGuideOpen) {
+            setIsGuideOpen(false);
+        }
+        
+        handleHashChange();
     };
 
     window.addEventListener('popstate', handlePopState);
-    window.history.replaceState({ page: 'home' }, '', '');
+    // Adicionamos hashchange para cobrir edições manuais na URL
+    window.addEventListener('hashchange', handleHashChange);
 
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+    return () => {
+        window.removeEventListener('popstate', handlePopState);
+        window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, [activeStudy, isGuideOpen]);
 
   useLayoutEffect(() => {
     if (!activeStudy && !isGuideOpen) {
@@ -90,7 +152,7 @@ function App() {
       return <Onboarding onComplete={handleOnboardingComplete} />;
   }
 
-  // 2. Full Page Views
+  // 2. Full Page Views (Overlay)
   if (activeStudy) {
     return (
       <StudyPage 
@@ -120,7 +182,7 @@ function App() {
              <Home 
                 language={language} 
                 setLanguage={setLanguage}
-                onNavigate={setViewMode}
+                onNavigate={navigateTo} 
              />
         )}
         {viewMode === 'dbs' && (
@@ -141,17 +203,18 @@ function App() {
             <ResourcesPage 
               language={language} 
               setLanguage={setLanguage}
-              onBack={() => setViewMode('home')}
+              onBack={() => navigateTo('home')}
             />
         )}
       </main>
 
+      {/* Navigation Bar (Bottom) */}
       {viewMode !== 'resources' && (
         <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
             <div className="bg-gray-900/90 backdrop-blur-xl text-white p-1.5 rounded-full shadow-2xl flex items-center gap-1 pointer-events-auto transform transition-all hover:scale-105 border border-white/10">
                 
                 <button 
-                    onClick={() => setViewMode('home')}
+                    onClick={() => navigateTo('home')}
                     className={`flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
                     ${viewMode === 'home' ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
                 >
@@ -161,7 +224,7 @@ function App() {
                 <div className="w-px h-4 bg-gray-700 mx-1"></div>
 
                 <button 
-                    onClick={() => setViewMode('dbs')}
+                    onClick={() => navigateTo('dbs')}
                     className={`flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
                     ${viewMode === 'dbs' ? 'bg-teal-600 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
                 >
@@ -171,7 +234,7 @@ function App() {
                 <div className="w-px h-4 bg-gray-700 mx-1"></div>
 
                 <button 
-                    onClick={() => setViewMode('meditation')}
+                    onClick={() => navigateTo('meditation')}
                     className={`flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm
                     ${viewMode === 'meditation' ? 'bg-orange-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
                 >
