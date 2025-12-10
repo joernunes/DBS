@@ -7,14 +7,16 @@ import MorningMeditation from './components/MorningMeditation';
 import ResourcesPage from './components/ResourcesPage';
 import Home from './components/Home';
 import Onboarding from './components/Onboarding'; // Import Onboarding
-import { IconBookOpen, IconSun, IconHome, IconFile } from './components/Icons';
-import { Scripture, Language } from './types';
+import SettingsModal from './components/SettingsModal'; // Import Settings Modal
+import { IconBookOpen, IconSun, IconHome, IconFile, IconSettings } from './components/Icons';
+import { Scripture, Language, FontSize } from './types';
 
 type ViewMode = 'home' | 'dbs' | 'meditation' | 'resources';
 
 function App() {
   const [activeStudy, setActiveStudy] = useState<Scripture | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
 
   // 1. Lazy Initialization para Onboarding
@@ -45,9 +47,20 @@ function App() {
       return (saved as Language) || 'pt';
   });
 
+  // Initialize Font Size lazily
+  const [fontSize, setFontSizeState] = useState<FontSize>(() => {
+      const saved = localStorage.getItem('dbs_font_size');
+      return (saved as FontSize) || 'normal';
+  });
+
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('dbs_language', lang);
+  };
+
+  const setFontSize = (size: FontSize) => {
+    setFontSizeState(size);
+    localStorage.setItem('dbs_font_size', size);
   };
 
   const handleOnboardingComplete = (selectedLang: Language) => {
@@ -160,6 +173,7 @@ function App() {
         onBack={handleBack} 
         language={language}
         setLanguage={setLanguage}
+        fontSize={fontSize}
       />
     );
   }
@@ -170,6 +184,7 @@ function App() {
           onBack={handleBack} 
           language={language}
           setLanguage={setLanguage}
+          fontSize={fontSize}
         />
     );
   }
@@ -197,6 +212,7 @@ function App() {
             <MorningMeditation 
               language={language} 
               setLanguage={setLanguage}
+              fontSize={fontSize}
             />
         )}
         {viewMode === 'resources' && (
@@ -207,6 +223,16 @@ function App() {
             />
         )}
       </main>
+
+      {/* Settings Modal */}
+      <SettingsModal 
+        isOpen={isSettingsOpen} 
+        onClose={() => setIsSettingsOpen(false)}
+        currentLanguage={language}
+        onLanguageChange={setLanguage}
+        currentFontSize={fontSize}
+        onFontSizeChange={setFontSize}
+      />
 
       {/* Navigation Bar (Bottom) */}
       {viewMode !== 'resources' && (
@@ -239,6 +265,16 @@ function App() {
                     ${viewMode === 'meditation' ? 'bg-orange-500 text-white shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
                 >
                     <IconSun className="w-5 h-5" />
+                </button>
+
+                <div className="w-px h-4 bg-gray-700 mx-1"></div>
+
+                {/* Settings Button */}
+                <button 
+                    onClick={() => setIsSettingsOpen(true)}
+                    className={`flex items-center justify-center w-12 h-10 rounded-full transition-all duration-300 font-medium text-sm text-gray-400 hover:text-white hover:bg-white/10`}
+                >
+                    <IconSettings className="w-5 h-5" />
                 </button>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { IconArrowLeft, IconPrinter, IconBookOpen } from './Icons';
-import { LocalizedStudyContent, Language } from '../types';
+import { LocalizedStudyContent, Language, FontSize } from '../types';
 import { STUDY_CONTENTS, GENERIC_QUESTIONS, SCRIPTURES_LIST } from '../constants';
 
 interface StudyPageProps {
@@ -9,6 +9,7 @@ interface StudyPageProps {
   onBack: () => void;
   language: Language;
   setLanguage: (lang: Language) => void;
+  fontSize: FontSize;
 }
 
 const UI_LABELS = {
@@ -82,7 +83,7 @@ const UI_LABELS = {
   }
 };
 
-const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage }) => {
+const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLanguage, fontSize }) => {
   
   // Scroll to top when component mounts
   useEffect(() => {
@@ -99,6 +100,10 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
   // Dynamic lookup for title to ensure translation works
   const scriptureItem = SCRIPTURES_LIST.find(s => s.reference === study.reference);
   const currentTitle = scriptureItem ? scriptureItem[language].title : study.title;
+  
+  // Font Size Classes
+  const textSizeClass = fontSize === 'large' ? 'text-2xl md:text-3xl leading-relaxed' : 'text-xl md:text-2xl leading-loose';
+  const listTextClass = fontSize === 'large' ? 'text-xl md:text-2xl' : 'text-lg md:text-xl';
   
   let content: LocalizedStudyContent;
   
@@ -172,7 +177,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
         <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
             <div className="max-w-3xl mx-auto">
                 {/* Added key to force update on language change */}
-                <div key={`${language}-text`} className="font-serif text-xl md:text-2xl leading-loose text-gray-800 antialiased space-y-8">
+                <div key={`${language}-text`} className={`font-serif text-gray-800 antialiased space-y-8 ${textSizeClass}`}>
                   {content.bibleText.length > 0 ? (
                     // RENDER FULL TEXT
                     content.bibleText.map((paragraph, index) => (
@@ -215,7 +220,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                         {labels.godDesc}
                     </p>
                     
-                    <ul key={`${language}-god`} className="space-y-6 text-lg md:text-xl font-medium text-gray-700">
+                    <ul key={`${language}-god`} className={`space-y-6 font-medium text-gray-700 ${listTextClass}`}>
                         {content.quadrants.god.map((item, i) => (
                           <li key={i} className="flex gap-4 items-start group">
                               <span className="text-teal-500 mt-1 font-bold">?</span>
@@ -235,7 +240,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                         {labels.peopleDesc}
                     </p>
                     
-                    <ul key={`${language}-people`} className="space-y-6 text-lg md:text-xl font-medium text-gray-700">
+                    <ul key={`${language}-people`} className={`space-y-6 font-medium text-gray-700 ${listTextClass}`}>
                         {content.quadrants.people.map((item, i) => (
                           <li key={i} className="flex gap-4 items-start group">
                               <span className="text-sky-500 mt-1 font-bold">?</span>
@@ -257,11 +262,11 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                     
                     <div key={`${language}-obey`} className="bg-white p-8 rounded-xl shadow-sm border border-orange-100">
                          {content.isGeneric ? (
-                            <p className="font-serif text-lg leading-relaxed text-gray-700">
+                            <p className={`font-serif leading-relaxed text-gray-700 ${listTextClass}`}>
                                 {content.quadrants.obedience.example}
                             </p>
                          ) : (
-                            <p className="font-serif text-2xl leading-relaxed italic text-gray-700">
+                            <p className={`font-serif leading-relaxed italic text-gray-700 ${textSizeClass}`}>
                                 "{content.quadrants.obedience.example}"
                             </p>
                          )}
@@ -280,11 +285,11 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                     
                      <div key={`${language}-share`} className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
                         {content.isGeneric ? (
-                             <p className="font-serif text-lg leading-relaxed text-gray-700">
+                             <p className={`font-serif leading-relaxed text-gray-700 ${listTextClass}`}>
                                 {content.quadrants.obedience.share}
                              </p>
                         ) : (
-                             <p className="font-serif text-2xl leading-relaxed italic text-gray-700">
+                             <p className={`font-serif leading-relaxed italic text-gray-700 ${textSizeClass}`}>
                                 "{content.quadrants.obedience.share}"
                             </p>
                         )}

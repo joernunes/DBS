@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { IconArrowLeft, IconArrowUp, IconUsers, IconCheckCircle, IconMessageCircle, IconPrinter } from './Icons';
-import { Language } from '../types';
+import { Language, FontSize } from '../types';
 
 interface GuidePageProps {
   onBack: () => void;
   language: Language;
   setLanguage: (lang: Language) => void;
+  fontSize: FontSize;
 }
 
 const TRANSLATIONS = {
@@ -248,7 +249,7 @@ const TRANSLATIONS = {
   }
 };
 
-const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) => {
+const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage, fontSize }) => {
   
   // Scroll to top when component mounts
   useEffect(() => {
@@ -256,6 +257,10 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
   }, []);
 
   const t = TRANSLATIONS[language];
+
+  // Font Classes
+  const titleClass = fontSize === 'large' ? 'text-4xl md:text-6xl' : 'text-3xl md:text-5xl';
+  const bodyClass = fontSize === 'large' ? 'text-xl leading-relaxed' : 'text-lg leading-relaxed';
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -292,7 +297,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
             <span className="inline-block py-1.5 px-4 border border-gray-300 rounded-full text-xs font-bold uppercase tracking-widest text-gray-500 mb-6">
               {t.tagline}
             </span>
-            <h1 className="text-4xl md:text-6xl font-serif font-medium text-gray-900 mb-4 tracking-tight leading-tight">
+            <h1 className={`${titleClass} font-serif font-medium text-gray-900 mb-4 tracking-tight leading-tight`}>
               {t.title}
             </h1>
             <p className="text-teal-700 font-sans uppercase tracking-widest text-sm font-bold">
@@ -304,7 +309,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
         {/* Introduction Section */}
         <section className="py-12 px-6 bg-white border-b border-gray-50">
             <div className="max-w-3xl mx-auto text-center">
-                <p className="text-xl font-serif italic text-gray-600 leading-relaxed">
+                <p className={`${bodyClass} font-serif italic text-gray-600`}>
                     {t.intro}
                 </p>
             </div>
@@ -322,7 +327,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
                             {t.lookBack.title}
                             <span className="text-xs font-normal text-gray-400 uppercase tracking-widest border border-gray-200 px-2 py-1 rounded">{t.lookBack.time}</span>
                         </h3>
-                        <div className="font-serif text-lg md:text-xl leading-relaxed text-gray-600 space-y-4">
+                        <div className={`font-serif text-gray-600 space-y-4 ${bodyClass}`}>
                             <p>{t.lookBack.desc}</p>
                             <ul className="list-disc pl-5 space-y-2 text-gray-800">
                                 <li>{t.lookBack.q1}</li>
@@ -343,7 +348,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
                             {t.readRetell.title}
                             <span className="text-xs font-normal text-gray-400 uppercase tracking-widest border border-gray-200 px-2 py-1 rounded">{t.readRetell.time}</span>
                         </h3>
-                        <div className="font-serif text-lg md:text-xl leading-relaxed text-gray-600 space-y-4">
+                        <div className={`font-serif text-gray-600 space-y-4 ${bodyClass}`}>
                             <p>{t.readRetell.desc}</p>
                             <ul className="list-disc pl-5 space-y-2 text-gray-800">
                                 <li>{t.readRetell.step1}</li>
@@ -367,13 +372,13 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
                         <span className="text-sm font-bold uppercase tracking-widest">{t.lookUp.tag}</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-black uppercase mb-4 tracking-tight text-teal-800">{t.lookUp.godTitle}</h2>
-                    <p className="text-gray-600 text-lg font-serif italic mb-8 border-l-4 border-teal-200 pl-4">
+                    <p className={`text-gray-600 font-serif italic mb-8 border-l-4 border-teal-200 pl-4 ${bodyClass}`}>
                         {t.lookUp.godDesc}
                     </p>
                     
                     <div className="bg-white/60 p-6 rounded-xl border border-teal-100">
                         <p className="text-sm font-bold text-teal-800 mb-3 uppercase tracking-wide">{t.lookUp.auxTitle}</p>
-                        <ul className="space-y-3 text-base md:text-lg text-gray-700">
+                        <ul className={`space-y-3 text-gray-700 ${bodyClass}`}>
                             <li className="flex gap-3">
                                 <span className="text-teal-500 font-bold">?</span>
                                 <span>{t.lookUp.godQ1}</span>
@@ -399,13 +404,13 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
                         <span className="text-sm font-bold uppercase tracking-widest">{t.lookUp.tag}</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-black uppercase mb-4 tracking-tight text-sky-800">{t.lookUp.peopleTitle}</h2>
-                    <p className="text-gray-600 text-lg font-serif italic mb-8 border-l-4 border-sky-200 pl-4">
+                    <p className={`text-gray-600 font-serif italic mb-8 border-l-4 border-sky-200 pl-4 ${bodyClass}`}>
                         {t.lookUp.peopleDesc}
                     </p>
                     
                     <div className="bg-white/60 p-6 rounded-xl border border-sky-100">
                         <p className="text-sm font-bold text-sky-800 mb-3 uppercase tracking-wide">{t.lookUp.auxTitle}</p>
-                        <ul className="space-y-3 text-base md:text-lg text-gray-700">
+                        <ul className={`space-y-3 text-gray-700 ${bodyClass}`}>
                             <li className="flex gap-3">
                                 <span className="text-sky-500 font-bold">?</span>
                                 <span>{t.lookUp.peopleQ1}</span>
@@ -431,7 +436,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
                         <span className="text-sm font-bold uppercase tracking-widest">{t.lookForward.tag}</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-black uppercase mb-4 tracking-tight text-orange-800">{t.lookForward.obeyTitle}</h2>
-                    <p className="text-gray-600 text-lg font-serif italic mb-8 border-l-4 border-orange-200 pl-4">
+                    <p className={`text-gray-600 font-serif italic mb-8 border-l-4 border-orange-200 pl-4 ${bodyClass}`}>
                         {t.lookForward.obeyDesc}
                     </p>
                     
@@ -455,7 +460,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ onBack, language, setLanguage }) 
                         <span className="text-sm font-bold uppercase tracking-widest">{t.lookForward.tag}</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-black uppercase mb-4 tracking-tight text-slate-700">{t.lookForward.shareTitle}</h2>
-                    <p className="text-gray-600 text-lg font-serif italic mb-8 border-l-4 border-slate-200 pl-4">
+                    <p className={`text-gray-600 font-serif italic mb-8 border-l-4 border-slate-200 pl-4 ${bodyClass}`}>
                         {t.lookForward.shareDesc}
                     </p>
                     

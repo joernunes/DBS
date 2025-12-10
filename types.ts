@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export type Language = 'pt' | 'en' | 'fr' | 'es';
+export type FontSize = 'normal' | 'large';
 
 export interface Scripture {
   title: string;

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { IconSun, IconHeart, IconBookOpen, IconMessageCircle, IconCheckCircle, IconArrowRight, IconArrowLeft, IconUsers, IconClock, IconPlay, IconPause, IconRotateCcw } from './Icons';
-import { Language, MeditationItem } from '../types';
+import { Language, MeditationItem, FontSize } from '../types';
 import { MORNING_UI, MORNING_MEDITATIONS_LIST } from '../constants';
 
 interface MorningMeditationProps {
     language: Language;
     setLanguage: (lang: Language) => void;
+    fontSize: FontSize;
 }
 
 type Mode = 'list' | 'guide' | 'read';
@@ -15,7 +16,7 @@ const SACRED_TIME_SECONDS = 15 * 60; // 15 minutes
 const STORAGE_KEY_END_TIME = 'dbs_mct_end_time';
 const STORAGE_KEY_PAUSED_LEFT = 'dbs_mct_paused_left';
 
-const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLanguage }) => {
+const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLanguage, fontSize }) => {
     const [mode, setMode] = useState<Mode>('list');
     const [activeMeditation, setActiveMeditation] = useState<MeditationItem | null>(null);
     
@@ -26,6 +27,11 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
     const intervalRef = useRef<number | null>(null);
 
     const ui = MORNING_UI[language];
+
+    // Font Styles
+    const titleSize = fontSize === 'large' ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl';
+    const bodySize = fontSize === 'large' ? 'text-xl leading-relaxed' : 'text-lg leading-relaxed';
+    const reflectionSize = fontSize === 'large' ? 'text-xl' : 'text-lg';
 
     // Initialization: Check Storage on Mount
     useEffect(() => {
@@ -149,8 +155,8 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
             <div className="space-y-12">
                 <div className="text-center mb-10">
                     <span className="inline-block py-1 px-3 bg-orange-50 rounded-full text-xs font-bold text-orange-500 uppercase tracking-widest mb-4">Guia Prático</span>
-                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6 leading-tight">{ui.guideTitle}</h2>
-                    <p className="text-lg text-gray-600 leading-relaxed font-serif italic border-l-4 border-orange-200 pl-4 text-left md:text-center md:border-l-0 md:border-t-4 md:pt-4">
+                    <h2 className={`${titleSize} font-serif font-bold text-gray-900 mb-6 leading-tight`}>{ui.guideTitle}</h2>
+                    <p className={`${bodySize} text-gray-600 font-serif italic border-l-4 border-orange-200 pl-4 text-left md:text-center md:border-l-0 md:border-t-4 md:pt-4`}>
                         "{ui.guideIntro}"
                     </p>
                 </div>
@@ -159,7 +165,7 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
                     <div key={pIndex} className="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100">
                         <div className="mb-8 pb-4 border-b border-gray-100">
                             <h3 className="text-xl md:text-2xl font-bold text-orange-600 uppercase tracking-wide mb-2">{phase.title}</h3>
-                            {phase.desc && <p className="text-gray-600 font-medium">{phase.desc}</p>}
+                            {phase.desc && <p className={`${bodySize} text-gray-600 font-medium`}>{phase.desc}</p>}
                         </div>
 
                         <div className="space-y-8">
@@ -189,7 +195,7 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
                                                      <h4 className="text-lg md:text-xl font-bold text-gray-800">{step.title}</h4>
                                                  </div>
                                                  
-                                                 <p className="text-gray-600 leading-relaxed mb-3">
+                                                 <p className={`${bodySize} text-gray-600 mb-3`}>
                                                      {step.desc}
                                                  </p>
 
@@ -231,7 +237,7 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
                 <div className="bg-white rounded-3xl shadow-sm border border-orange-100 overflow-hidden select-none">
                     <div className="bg-orange-50 p-8 text-center border-b border-orange-100">
                          <span className="inline-block py-1 px-3 bg-white rounded-full text-xs font-bold text-orange-400 uppercase tracking-widest mb-4">Devocional</span>
-                         <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-2">{content.title}</h2>
+                         <h2 className={`${titleSize} font-serif font-bold text-gray-800 mb-2`}>{content.title}</h2>
                          <p className="text-orange-700 font-medium">{activeMeditation.reference}</p>
                     </div>
 
@@ -251,15 +257,15 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
                             <h3 className="text-lg font-bold text-gray-900 uppercase tracking-wide border-b border-gray-100 pb-2">Reflexão</h3>
                             
                             <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-100">
-                                <p className="font-serif text-lg text-gray-700 italic mb-4">"{content.theme}"</p>
+                                <p className={`font-serif text-gray-700 italic mb-4 ${reflectionSize}`}>"{content.theme}"</p>
                                 <ul className="space-y-4">
                                     <li className="flex gap-3">
                                         <IconHeart className="w-5 h-5 text-orange-400 flex-shrink-0 mt-1" />
-                                        <span className="text-gray-700">O que Deus está falando ao meu coração hoje sobre isso?</span>
+                                        <span className={`text-gray-700 ${reflectionSize}`}>O que Deus está falando ao meu coração hoje sobre isso?</span>
                                     </li>
                                     <li className="flex gap-3">
                                         <IconCheckCircle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-1" />
-                                        <span className="text-gray-700">Existe algo que preciso entregar ou confiar a Ele?</span>
+                                        <span className={`text-gray-700 ${reflectionSize}`}>Existe algo que preciso entregar ou confiar a Ele?</span>
                                     </li>
                                 </ul>
                             </div>
@@ -287,6 +293,33 @@ const MorningMeditation: React.FC<MorningMeditationProps> = ({ language, setLang
                         <span className="block text-lg leading-none">{ui.guideBtn}</span>
                     </div>
                   </button>
+            </div>
+
+            {/* List */}
+            <div className="space-y-4">
+                <div className="flex items-center gap-2 mb-4 px-2">
+                     <IconHeart className="w-4 h-4 text-orange-500" />
+                     <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wide">{ui.listTitle}</h2>
+                </div>
+                
+                {MORNING_MEDITATIONS_LIST.map((item) => {
+                    const content = item[language];
+                    return (
+                        <div 
+                            key={item.id}
+                            onClick={() => handleOpenMeditation(item)}
+                            className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200 transition-all cursor-pointer flex items-center justify-between group"
+                        >
+                            <div>
+                                <h3 className="font-bold text-gray-800 text-lg group-hover:text-orange-600 transition-colors">{content.title}</h3>
+                                <p className="text-sm text-gray-400 font-medium">{item.reference}</p>
+                            </div>
+                            <div className="w-8 h-8 rounded-full bg-orange-50 text-orange-400 flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-all">
+                                <IconArrowRight className="w-4 h-4" />
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
