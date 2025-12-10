@@ -9,6 +9,218 @@ interface HomeProps {
     onNavigate: (view: 'dbs' | 'meditation' | 'resources') => void;
 }
 
+// Dados da Escola Sabatina Multilíngues
+const SABBATH_SCHOOL_SCHEDULE = [
+    // Final de 2025 - Themes in Faith
+    { 
+        date: '2025-12-06', 
+        quarter: {
+            en: 'Themes in Faith',
+            pt: 'Temas de Fé',
+            es: 'Temas de Fe',
+            fr: 'Thèmes de la Foi'
+        },
+        title: {
+            en: 'Ultimate Loyalty: Worship in a War Zone',
+            pt: 'Lealdade Suprema: Adoração em Zona de Guerra',
+            es: 'Lealtad Suprema: Adoración en Zona de Guerra',
+            fr: 'Loyauté Suprême : Adoration en Zone de Guerre'
+        }
+    },
+    { 
+        date: '2025-12-13', 
+        quarter: { en: 'Themes in Faith', pt: 'Temas de Fé', es: 'Temas de Fe', fr: 'Thèmes de la Foi' },
+        title: {
+            en: 'Giants of Faith: Joshua and Caleb',
+            pt: 'Gigantes da Fé: Josué e Calebe',
+            es: 'Gigantes de la Fe: Josué y Caleb',
+            fr: 'Géants de la Foi : Josué et Caleb'
+        }
+    },
+    { 
+        date: '2025-12-20', 
+        quarter: { en: 'Themes in Faith', pt: 'Temas de Fé', es: 'Temas de Fe', fr: 'Thèmes de la Foi' },
+        title: {
+            en: 'Heirs of Promises, Prisoners of Hope',
+            pt: 'Herdeiros da Promessa, Prisioneiros da Esperança',
+            es: 'Herederos de Promesas, Prisioneros de Esperanza',
+            fr: 'Héritiers des Promesses, Prisonniers de l\'Espérance'
+        }
+    },
+    { 
+        date: '2025-12-27', 
+        quarter: { en: 'Themes in Faith', pt: 'Temas de Fé', es: 'Temas de Fe', fr: 'Thèmes de la Foi' },
+        title: {
+            en: 'The True Joshua',
+            pt: 'O Verdadeiro Josué',
+            es: 'El Verdadero Josué',
+            fr: 'Le Vrai Josué'
+        }
+    },
+    { 
+        date: '2026-01-03', 
+        quarter: { en: 'Themes in Faith', pt: 'Temas de Fé', es: 'Temas de Fe', fr: 'Thèmes de la Foi' },
+        title: {
+            en: 'Living in the Land',
+            pt: 'Vivendo na Terra',
+            es: 'Viviendo en la Tierra',
+            fr: 'Vivre dans le Pays'
+        }
+    },
+    { 
+        date: '2026-01-10', 
+        quarter: { en: 'Themes in Faith', pt: 'Temas de Fé', es: 'Temas de Fe', fr: 'Thèmes de la Foi' },
+        title: {
+            en: 'God Is Faithful!',
+            pt: 'Deus é Fiel!',
+            es: '¡Dios es Fiel!',
+            fr: 'Dieu est Fidèle !'
+        }
+    },
+    { 
+        date: '2026-01-17', 
+        quarter: { en: 'Themes in Faith', pt: 'Temas de Fé', es: 'Temas de Fe', fr: 'Thèmes de la Foi' },
+        title: {
+            en: 'Choose This Day!',
+            pt: 'Escolhei Hoje!',
+            es: '¡Escoged Hoy!',
+            fr: 'Choisissez Aujourd\'hui !'
+        }
+    },
+    
+    // 1º Trimestre de 2026 — Philippians and Colossians
+    { 
+        date: '2026-01-24', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Persecuted But Not Forsaken',
+            pt: 'Perseguidos, mas não Desamparados',
+            es: 'Perseguidos pero no Desamparados',
+            fr: 'Persécutés mais non Abandonnés'
+        }
+    },
+    { 
+        date: '2026-01-31', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Reasons for Thanksgiving and Prayer',
+            pt: 'Razões para Ação de Graças e Oração',
+            es: 'Razones para Acción de Gracias y Oración',
+            fr: 'Raisons d\'Action de Grâce et de Prière'
+        }
+    },
+    { 
+        date: '2026-02-07', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Life and Death',
+            pt: 'Vida e Morte',
+            es: 'Vida y Muerte',
+            fr: 'Vie et Mort'
+        }
+    },
+    { 
+        date: '2026-02-14', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Unity through Humility',
+            pt: 'Unidade através da Humildade',
+            es: 'Unidad a través de la Humildad',
+            fr: 'L\'Unité par l\'Humilité'
+        }
+    },
+    { 
+        date: '2026-02-21', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Shining as Lights in the Night',
+            pt: 'Brilhando como Luzes na Noite',
+            es: 'Brillando como Luces en la Noche',
+            fr: 'Briller comme des Lumières dans la Nuit'
+        }
+    },
+    { 
+        date: '2026-02-28', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Confidence Only in Christ',
+            pt: 'Confiança Apenas em Cristo',
+            es: 'Confianza Solo en Cristo',
+            fr: 'Confiance Seulement en Christ'
+        }
+    },
+    { 
+        date: '2026-03-07', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'A Heavenly Citizenship',
+            pt: 'Uma Cidadania Celestial',
+            es: 'Una Ciudadanía Celestial',
+            fr: 'Une Citoyenneté Céleste'
+        }
+    },
+    { 
+        date: '2026-03-14', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'The Preeminence of Christ',
+            pt: 'A Preeminência de Cristo',
+            es: 'La Preeminencia de Cristo',
+            fr: 'La Prééminence du Christ'
+        }
+    },
+    { 
+        date: '2026-03-21', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Reconciliation and Hope',
+            pt: 'Reconciliação e Esperança',
+            es: 'Reconciliación y Esperanza',
+            fr: 'Réconciliation et Espérance'
+        }
+    },
+    { 
+        date: '2026-03-28', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Complete in Christ',
+            pt: 'Completos em Cristo',
+            es: 'Completos en Cristo',
+            fr: 'Complets en Christ'
+        }
+    },
+    { 
+        date: '2026-04-04', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Living with Christ',
+            pt: 'Vivendo com Cristo',
+            es: 'Viviendo con Cristo',
+            fr: 'Vivre avec Christ'
+        }
+    },
+    { 
+        date: '2026-04-11', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Living with Each Other',
+            pt: 'Vivendo Uns com os Outros',
+            es: 'Viviendo Unos con Otros',
+            fr: 'Vivre les Uns avec les Autres'
+        }
+    },
+    { 
+        date: '2026-04-18', 
+        quarter: { en: 'Philippians & Colossians', pt: 'Filipenses e Colossenses', es: 'Filipenses y Colosenses', fr: 'Philippiens et Colossiens' },
+        title: {
+            en: 'Standing in All the Will of God',
+            pt: 'Firmes em Toda a Vontade de Deus',
+            es: 'Firmes en Toda la Voluntad de Dios',
+            fr: 'Fermes dans Toute la Volonté de Dieu'
+        }
+    },
+];
+
 const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
     const ui = HOME_UI[language];
 
@@ -59,6 +271,29 @@ const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
             case 'es': return 'Biblioteca y Subidas';
             default: return 'Biblioteca & Uploads';
         }
+    };
+
+    // Lógica para obter a lição atual
+    const getCurrentLesson = () => {
+        const today = new Date();
+        // Ordena do mais recente para o mais antigo
+        const sortedLessons = [...SABBATH_SCHOOL_SCHEDULE].sort((a, b) => 
+            new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+
+        // Encontra a primeira lição cuja data seja menor ou igual a hoje
+        // Se hoje for antes da primeira data (Preview Mode), retorna a primeira da lista original
+        const current = sortedLessons.find(l => new Date(l.date) <= today);
+        
+        return current || SABBATH_SCHOOL_SCHEDULE[0];
+    };
+
+    const currentLesson = getCurrentLesson();
+
+    // Formatação de data amigável
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString(language, { day: 'numeric', month: 'short' });
     };
 
     return (
@@ -201,13 +436,34 @@ const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
                     </button>
                 </div>
 
-                {/* Additional Content - e.g., Announcements */}
-                <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-2xl p-6 text-white shadow-lg">
-                    <h3 className="font-bold text-lg mb-2">{ui.ssTitle}</h3>
-                    <p className="text-indigo-200 text-sm mb-4">
-                        {ui.ssDesc}
-                    </p>
-                    <a href="#" className="text-xs font-bold uppercase tracking-widest text-white border-b border-white/30 pb-1 hover:border-white transition-all inline-flex items-center gap-2">
+                {/* Sabbath School Card (Dynamic) */}
+                <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    
+                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+                        {ui.ssTitle}
+                    </h3>
+
+                    <div className="mb-4 relative z-10">
+                        <div className="flex items-center gap-2 mb-1">
+                             <span className="text-[10px] uppercase font-bold bg-indigo-500/30 border border-indigo-400/30 px-2 py-0.5 rounded text-indigo-100 tracking-wider">
+                                {formatDate(currentLesson.date)}
+                             </span>
+                             <span className="text-[10px] uppercase font-bold text-purple-200 tracking-wide opacity-80">
+                                {currentLesson.quarter[language]}
+                             </span>
+                        </div>
+                        <p className="text-white font-bold text-xl leading-snug">
+                            {currentLesson.title[language]}
+                        </p>
+                    </div>
+
+                    <a 
+                        href="https://sabbathschoolonthemove.org" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-xs font-bold uppercase tracking-widest text-white border-b border-white/30 pb-1 hover:border-white transition-all inline-flex items-center gap-2"
+                    >
                         {ui.ssBtn} <IconArrowRight className="w-3 h-3" />
                     </a>
                 </div>
