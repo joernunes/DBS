@@ -29,18 +29,32 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
 
                 {/* Text */}
                 <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 tracking-tight">
-                    Comunidade Viva
+                    Communauté Vivante
                 </h1>
                 <p className="text-gray-300 text-lg mb-12 font-light leading-relaxed max-w-xs mx-auto">
-                    Conectando corações, estudando a Palavra e caminhando juntos.
+                    Connecter les cœurs, étudier la Parole et cheminer ensemble.
                 </p>
 
                 {/* Language Selection */}
                 <div className="w-full space-y-4">
                     <p className="text-teal-500 text-xs font-bold uppercase tracking-[0.2em] mb-4 opacity-80">
-                        Selecione seu Idioma / Select Language
+                        Sélectionnez votre langue
                     </p>
                     
+                    <button 
+                        onClick={() => onComplete('fr')}
+                        className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                        <div className="flex items-center gap-4">
+                            <span className="text-2xl">🇫🇷</span>
+                            <div className="text-left">
+                                <span className="block font-bold">Français</span>
+                                <span className="text-xs text-gray-400">Commencer</span>
+                            </div>
+                        </div>
+                        <IconArrowRight className="w-5 h-5 text-gray-500 group-hover:text-teal-400 transition-colors" />
+                    </button>
+
                     <button 
                         onClick={() => onComplete('pt')}
                         className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
@@ -82,24 +96,10 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
                         </div>
                         <IconArrowRight className="w-5 h-5 text-gray-500 group-hover:text-teal-400 transition-colors" />
                     </button>
-
-                    <button 
-                        onClick={() => onComplete('fr')}
-                        className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                        <div className="flex items-center gap-4">
-                            <span className="text-2xl">🇫🇷</span>
-                            <div className="text-left">
-                                <span className="block font-bold">Français</span>
-                                <span className="text-xs text-gray-400">Commencer</span>
-                            </div>
-                        </div>
-                        <IconArrowRight className="w-5 h-5 text-gray-500 group-hover:text-teal-400 transition-colors" />
-                    </button>
                 </div>
 
                 <div className="mt-12 text-xs text-gray-500 font-medium">
-                    Discípulos fazendo discípulos.
+                    Des disciples faisant des disciples.
                 </div>
             </div>
         </div>
