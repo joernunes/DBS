@@ -1,3 +1,4 @@
+
 import { MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions, MorningUI, MeditationItem, ResourceUI } from './types';
 
 export const NAV_LINKS = [
@@ -16,6 +17,7 @@ export const HOME_UI: Record<string, HomeContent> = {
     welcome: "Bem-vindo ao PG",
     meetingInfo: "Próximo Encontro",
     meetingDay: "Sexta-feira às 19:30",
+    location: "Casa do Líder",
     confirmBtn: "Confirmar Presença",
     verseTitle: "Verso do Dia",
     nextStudy: "Preparar Estudo",
@@ -34,6 +36,7 @@ export const HOME_UI: Record<string, HomeContent> = {
     welcome: "Welcome to the Group",
     meetingInfo: "Next Meeting",
     meetingDay: "Friday at 7:30 PM",
+    location: "Leader's House",
     confirmBtn: "Confirm Attendance",
     verseTitle: "Verse of the Day",
     nextStudy: "Prepare Study",
@@ -52,6 +55,7 @@ export const HOME_UI: Record<string, HomeContent> = {
     welcome: "Bienvenue au Groupe",
     meetingInfo: "Prochaine Réunion",
     meetingDay: "Vendredi à 19h30",
+    location: "Maison du Leader",
     confirmBtn: "Confirmer la Présence",
     verseTitle: "Verset du Jour",
     nextStudy: "Préparer l'Étude",
@@ -70,6 +74,7 @@ export const HOME_UI: Record<string, HomeContent> = {
     welcome: "Bienvenido al Grupo",
     meetingInfo: "Próxima Reunión",
     meetingDay: "Viernes a las 19:30",
+    location: "Casa del Líder",
     confirmBtn: "Confirmar Asistencia",
     verseTitle: "Versículo del Día",
     nextStudy: "Preparar Estudio",

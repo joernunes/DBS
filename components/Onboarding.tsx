@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { IconBookOpen, IconArrowRight } from './Icons';
-import { Language } from '../types';
 
 interface OnboardingProps {
-    onComplete: (lang: Language) => void;
+    onComplete: () => void;
 }
 
 const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
@@ -29,77 +28,23 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
 
                 {/* Text */}
                 <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 tracking-tight">
-                    Communauté Vivante
+                    Comunidade Viva
                 </h1>
                 <p className="text-gray-300 text-lg mb-12 font-light leading-relaxed max-w-xs mx-auto">
-                    Connecter les cœurs, étudier la Parole et cheminer ensemble.
+                    Conectando corações, estudando a Palavra e caminhando juntos.
                 </p>
 
-                {/* Language Selection */}
-                <div className="w-full space-y-4">
-                    <p className="text-teal-500 text-xs font-bold uppercase tracking-[0.2em] mb-4 opacity-80">
-                        Sélectionnez votre langue
-                    </p>
-                    
-                    <button 
-                        onClick={() => onComplete('fr')}
-                        className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                        <div className="flex items-center gap-4">
-                            <span className="text-2xl">🇫🇷</span>
-                            <div className="text-left">
-                                <span className="block font-bold">Français</span>
-                                <span className="text-xs text-gray-400">Commencer</span>
-                            </div>
-                        </div>
-                        <IconArrowRight className="w-5 h-5 text-gray-500 group-hover:text-teal-400 transition-colors" />
-                    </button>
+                {/* Single Button */}
+                <button 
+                    onClick={onComplete}
+                    className="group w-full max-w-xs bg-teal-600 hover:bg-teal-500 text-white py-4 px-8 rounded-full font-bold text-lg shadow-lg shadow-teal-900/50 flex items-center justify-center gap-3 transition-all transform hover:scale-105 active:scale-95"
+                >
+                    Começar Jornada
+                    <IconArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
 
-                    <button 
-                        onClick={() => onComplete('pt')}
-                        className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                        <div className="flex items-center gap-4">
-                            <span className="text-2xl">🇧🇷</span>
-                            <div className="text-left">
-                                <span className="block font-bold">Português</span>
-                                <span className="text-xs text-gray-400">Começar jornada</span>
-                            </div>
-                        </div>
-                        <IconArrowRight className="w-5 h-5 text-gray-500 group-hover:text-teal-400 transition-colors" />
-                    </button>
-
-                    <button 
-                        onClick={() => onComplete('es')}
-                        className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                        <div className="flex items-center gap-4">
-                            <span className="text-2xl">🇪🇸</span>
-                            <div className="text-left">
-                                <span className="block font-bold">Español</span>
-                                <span className="text-xs text-gray-400">Comenzar viaje</span>
-                            </div>
-                        </div>
-                        <IconArrowRight className="w-5 h-5 text-gray-500 group-hover:text-teal-400 transition-colors" />
-                    </button>
-
-                    <button 
-                        onClick={() => onComplete('en')}
-                        className="group w-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 hover:border-teal-500/50 text-white py-4 px-6 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                        <div className="flex items-center gap-4">
-                            <span className="text-2xl">🇺🇸</span>
-                            <div className="text-left">
-                                <span className="block font-bold">English</span>
-                                <span className="text-xs text-gray-400">Start journey</span>
-                            </div>
-                        </div>
-                        <IconArrowRight className="w-5 h-5 text-gray-500 group-hover:text-teal-400 transition-colors" />
-                    </button>
-                </div>
-
-                <div className="mt-12 text-xs text-gray-500 font-medium">
-                    Des disciples faisant des disciples.
+                <div className="mt-12 text-xs text-gray-500 font-medium opacity-60">
+                    Discípulos fazendo discípulos.
                 </div>
             </div>
         </div>

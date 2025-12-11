@@ -63,8 +63,8 @@ function App() {
     localStorage.setItem('dbs_font_size', size);
   };
 
-  const handleOnboardingComplete = (selectedLang: Language) => {
-      setLanguage(selectedLang);
+  const handleOnboardingComplete = () => {
+      // Não altera o idioma aqui, mantém o padrão 'pt' ou o salvo no localStorage
       localStorage.setItem('dbs_onboarding_complete', 'true');
       setIsOnboarding(false);
   };
