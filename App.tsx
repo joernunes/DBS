@@ -69,6 +69,44 @@ function App() {
       setIsOnboarding(false);
   };
 
+  // SEO DINÂMICO: Atualiza Título e Descrição com base no idioma
+  useEffect(() => {
+    const seoConfig = {
+        pt: {
+            title: "DBS Simples | Estudo Bíblico & Comunidade",
+            desc: "Guia prático para Pequenos Grupos, Escola Sabatina e Meditação. Conecte-se com Deus e amigos."
+        },
+        en: {
+            title: "Simple DBS | Bible Study & Community",
+            desc: "Practical guide for Small Groups, Sabbath School, and Meditation. Connect with God and friends."
+        },
+        fr: {
+            title: "DBS Simple | Étude Biblique & Communauté",
+            desc: "Guide pratique pour les Petits Groupes, l'École du Sabbat et la Méditation. Connectez-vous avec Dieu."
+        },
+        es: {
+            title: "DBS Simple | Estudio Bíblico y Comunidad",
+            desc: "Guía práctica para Grupos Pequeños, Escuela Sabática y Meditación. Conéctate con Dios y amigos."
+        }
+    };
+
+    const config = seoConfig[language];
+    
+    // Atualiza Título
+    document.title = config.title;
+
+    // Atualiza Meta Description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute('content', config.desc);
+    }
+
+    // Atualiza atributo lang do HTML
+    document.documentElement.lang = language === 'pt' ? 'pt-BR' : language;
+
+  }, [language]);
+
+
   // Função centralizada de navegação que atualiza URL e Estado
   const navigateTo = (mode: ViewMode) => {
       setViewModeState(mode);
