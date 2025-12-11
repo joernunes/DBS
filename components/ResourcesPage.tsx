@@ -120,7 +120,7 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ language, setLanguage, on
     // Handle Admin Login
     const handleAdminLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        if (adminPass === '1234') { // Mock password
+        if (adminPass === 'nunsem') { // Mock password
             setIsAdminUnlocked(true);
             setAdminError(false);
         } else {
