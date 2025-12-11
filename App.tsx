@@ -41,10 +41,10 @@ function App() {
 
   const [viewMode, setViewModeState] = useState<ViewMode>(getInitialViewMode);
   
-  // Initialize language lazily
+  // Initialize language lazily - DEFAULT TO FRENCH ('fr')
   const [language, setLanguageState] = useState<Language>(() => {
       const saved = localStorage.getItem('dbs_language');
-      return (saved as Language) || 'pt';
+      return (saved as Language) || 'fr';
   });
 
   // Initialize Font Size lazily
@@ -64,7 +64,7 @@ function App() {
   };
 
   const handleOnboardingComplete = () => {
-      // Não altera o idioma aqui, mantém o padrão 'pt' ou o salvo no localStorage
+      // Não altera o idioma aqui, mantém o padrão 'fr' ou o salvo no localStorage
       localStorage.setItem('dbs_onboarding_complete', 'true');
       setIsOnboarding(false);
   };

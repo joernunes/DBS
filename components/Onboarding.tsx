@@ -26,12 +26,12 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
                     <IconBookOpen className="w-10 h-10 text-teal-400" />
                 </div>
 
-                {/* Text */}
+                {/* Text (French) */}
                 <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 tracking-tight">
-                    Comunidade Viva
+                    Communauté Vivante
                 </h1>
                 <p className="text-gray-300 text-lg mb-12 font-light leading-relaxed max-w-xs mx-auto">
-                    Conectando corações, estudando a Palavra e caminhando juntos.
+                    Connecter les cœurs, étudier la Parole et marcher ensemble.
                 </p>
 
                 {/* Single Button */}
@@ -39,12 +39,12 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
                     onClick={onComplete}
                     className="group w-full max-w-xs bg-teal-600 hover:bg-teal-500 text-white py-4 px-8 rounded-full font-bold text-lg shadow-lg shadow-teal-900/50 flex items-center justify-center gap-3 transition-all transform hover:scale-105 active:scale-95"
                 >
-                    Começar Jornada
+                    Commencer l'Aventure
                     <IconArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
 
                 <div className="mt-12 text-xs text-gray-500 font-medium opacity-60">
-                    Discípulos fazendo discípulos.
+                    Des disciples faisant des disciples.
                 </div>
             </div>
         </div>
