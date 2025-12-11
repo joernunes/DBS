@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HOME_UI } from '../constants';
 import { Language } from '../types';
-import { IconCalendar, IconMapPin, IconBookOpen, IconSun, IconArrowRight, IconFile } from './Icons';
+import { IconCalendar, IconBookOpen, IconSun, IconArrowRight, IconFile } from './Icons';
 
 interface HomeProps {
     language: Language;
@@ -327,15 +327,8 @@ const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
                                 <IconCalendar className="w-5 h-5 text-teal-600" />
                                 {ui.meetingDay}
                             </div>
-                            <div className="flex items-center gap-2 text-gray-500 text-sm">
-                                <IconMapPin className="w-4 h-4" />
-                                {ui.location}
-                            </div>
                         </div>
                     </div>
-                    <button className="px-5 py-2.5 bg-teal-50 text-teal-700 font-bold rounded-lg hover:bg-teal-100 transition-colors text-sm">
-                        {ui.confirmBtn}
-                    </button>
                 </div>
 
                 {/* Verse of the Day Card */}
