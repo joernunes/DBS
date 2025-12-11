@@ -1,4 +1,5 @@
 
+
 import { MultilingualStudyContent, MultilingualScriptureItem, HomeContent, GenericQuestions, MorningUI, MeditationItem, ResourceUI } from './types';
 
 export const NAV_LINKS = [
@@ -416,7 +417,7 @@ export const MORNING_UI: Record<string, MorningUI> = {
       },
       {
         title: "Fase II: El Ritual de la Transformación",
-        desc: "Este es el momento en que te pones ante el Alfarero para ser remodelado.",
+        desc: "Este es el momento en que te pones ante el Alfarero para ser remodelé.",
         steps: [
           {
             title: "3. Lectura Reflexiva",
@@ -637,73 +638,73 @@ export const GENERIC_QUESTIONS: Record<string, GenericQuestions> = {
 export const SCRIPTURES_LIST: MultilingualScriptureItem[] = [
   { 
     reference: 'Gênesis 1:1-25',
-    pt: { title: 'A Criação', theme: 'Deus Cria o Mundo' },
-    en: { title: 'Creation', theme: 'God Creates the World' },
-    fr: { title: 'La Création', theme: 'Dieu Crée le Monde' },
-    es: { title: 'La Creación', theme: 'Dios Crea el Mundo' }
+    pt: { title: 'A Criação', theme: 'Deus Cria o Mundo', reference: 'Gênesis 1:1-25' },
+    en: { title: 'Creation', theme: 'God Creates the World', reference: 'Genesis 1:1-25' },
+    fr: { title: 'La Création', theme: 'Dieu Crée le Monde', reference: 'Genèse 1:1-25' },
+    es: { title: 'La Creación', theme: 'Dios Crea el Mundo', reference: 'Génesis 1:1-25' }
   },
   { 
     reference: 'Gênesis 2:4-24',
-    pt: { title: 'A Criação do Homem', theme: 'Relacionamento com Deus' },
-    en: { title: 'Creation of Man', theme: 'Relationship with God' },
-    fr: { title: 'Création de l\'Homme', theme: 'Relation avec Dieu' },
-    es: { title: 'La Creación del Hombre', theme: 'Relación con Dios' }
+    pt: { title: 'A Criação do Homem', theme: 'Relacionamento com Deus', reference: 'Gênesis 2:4-24' },
+    en: { title: 'Creation of Man', theme: 'Relationship with God', reference: 'Genesis 2:4-24' },
+    fr: { title: 'Création de l\'Homme', theme: 'Relation avec Dieu', reference: 'Genèse 2:4-24' },
+    es: { title: 'La Creación del Hombre', theme: 'Relación con Dios', reference: 'Génesis 2:4-24' }
   },
   { 
     reference: 'Gênesis 3:1-13',
-    pt: { title: 'A Desobediência', theme: 'A Queda da Humanidade' },
-    en: { title: 'The Disobedience', theme: 'The Fall of Humanity' },
-    fr: { title: 'La Désobéissance', theme: 'La Chute de l\'Humanité' },
-    es: { title: 'La Desobediencia', theme: 'La Caída de la Humanidad' }
+    pt: { title: 'A Desobediência', theme: 'A Queda da Humanidade', reference: 'Gênesis 3:1-13' },
+    en: { title: 'The Disobedience', theme: 'The Fall of Humanity', reference: 'Genesis 3:1-13' },
+    fr: { title: 'La Désobéissance', theme: 'La Chute de l\'Humanité', reference: 'Genèse 3:1-13' },
+    es: { title: 'La Desobediencia', theme: 'La Caída de la Humanidad', reference: 'Génesis 3:1-13' }
   },
   { 
     reference: 'Gênesis 12:1-8',
-    pt: { title: 'A Promessa', theme: 'Deus Chama Abraão' },
-    en: { title: 'The Promise', theme: 'God Calls Abraham' },
-    fr: { title: 'La Promesse', theme: 'Dieu Appelle Abraham' },
-    es: { title: 'La Promesa', theme: 'Dios Llama a Abraham' }
+    pt: { title: 'A Promessa', theme: 'Deus Chama Abraão', reference: 'Gênesis 12:1-8' },
+    en: { title: 'The Promise', theme: 'God Calls Abraham', reference: 'Genesis 12:1-8' },
+    fr: { title: 'La Promesse', theme: 'Dieu Appelle Abraham', reference: 'Genèse 12:1-8' },
+    es: { title: 'La Promesa', theme: 'Dios Llama a Abraham', reference: 'Génesis 12:1-8' }
   },
   { 
     reference: 'Gênesis 22:1-19',
-    pt: { title: 'O Sacrifício', theme: 'Deus Proverá' },
-    en: { title: 'The Sacrifice', theme: 'God Will Provide' },
-    fr: { title: 'Le Sacrifice', theme: 'Dieu Pourvoira' },
-    es: { title: 'El Sacrificio', theme: 'Dios Proveerá' }
+    pt: { title: 'O Sacrifício', theme: 'Deus Proverá', reference: 'Gênesis 22:1-19' },
+    en: { title: 'The Sacrifice', theme: 'God Will Provide', reference: 'Genesis 22:1-19' },
+    fr: { title: 'Le Sacrifice', theme: 'Dieu Pourvoira', reference: 'Genèse 22:1-19' },
+    es: { title: 'El Sacrificio', theme: 'Dios Proveerá', reference: 'Génesis 22:1-19' }
   },
   { 
     reference: 'Lucas 15:11-32',
-    pt: { title: 'O Filho Pródigo', theme: 'O Amor do Pai' },
-    en: { title: 'The Prodigal Son', theme: 'The Father\'s Love' },
-    fr: { title: 'Le Fils Prodigue', theme: 'L\'Amour du Père' },
-    es: { title: 'El Hijo Pródigo', theme: 'El Amor del Padre' }
+    pt: { title: 'O Filho Pródigo', theme: 'O Amor do Pai', reference: 'Lucas 15:11-32' },
+    en: { title: 'The Prodigal Son', theme: 'The Father\'s Love', reference: 'Luke 15:11-32' },
+    fr: { title: 'Le Fils Prodigue', theme: 'L\'Amour du Père', reference: 'Luc 15:11-32' },
+    es: { title: 'El Hijo Pródigo', theme: 'El Amor del Padre', reference: 'Lucas 15:11-32' }
   },
   { 
     reference: 'Marcos 2:1-12',
-    pt: { title: 'Jesus e o Paralítico', theme: 'Jesus Tem Autoridade' },
-    en: { title: 'Jesus and the Paralytic', theme: 'Jesus Has Authority' },
-    fr: { title: 'Jésus et le Paralytique', theme: 'Jésus a de l\'Autorité' },
-    es: { title: 'Jesús y el Paralítico', theme: 'Jesús Tiene Autoridad' }
+    pt: { title: 'Jesus e o Paralítico', theme: 'Jesus Tem Autoridade', reference: 'Marcos 2:1-12' },
+    en: { title: 'Jesus and the Paralytic', theme: 'Jesus Has Authority', reference: 'Mark 2:1-12' },
+    fr: { title: 'Jésus et le Paralytique', theme: 'Jésus a de l\'Autorité', reference: 'Marc 2:1-12' },
+    es: { title: 'Jesús y el Paralítico', theme: 'Jesús Tiene Autoridad', reference: 'Marcos 2:1-12' }
   },
   { 
     reference: 'Mateus 14:22-33',
-    pt: { title: 'Jesus Anda sobre as Águas', theme: 'Fé e Dúvida' },
-    en: { title: 'Jesus Walks on Water', theme: 'Faith and Doubt' },
-    fr: { title: 'Jésus Marche sur l\'Eau', theme: 'Foi et Doute' },
-    es: { title: 'Jesús Camina sobre el Agua', theme: 'Fe y Duda' }
+    pt: { title: 'Jesus Anda sobre as Águas', theme: 'Fé e Dúvida', reference: 'Mateus 14:22-33' },
+    en: { title: 'Jesus Walks on Water', theme: 'Faith and Doubt', reference: 'Matthew 14:22-33' },
+    fr: { title: 'Jésus Marche sur l\'Eau', theme: 'Foi et Doute', reference: 'Matthieu 14:22-33' },
+    es: { title: 'Jesús Camina sobre el Agua', theme: 'Fe y Duda', reference: 'Mateo 14:22-33' }
   },
   { 
     reference: 'Lucas 23:32-49',
-    pt: { title: 'A Cruz', theme: 'O Preço do Perdão' },
-    en: { title: 'The Cross', theme: 'The Price of Forgiveness' },
-    fr: { title: 'La Croix', theme: 'Le Prix du Pardon' },
-    es: { title: 'La Cruz', theme: 'El Precio del Perdón' }
+    pt: { title: 'A Cruz', theme: 'O Preço do Perdão', reference: 'Lucas 23:32-49' },
+    en: { title: 'The Cross', theme: 'The Price of Forgiveness', reference: 'Luke 23:32-49' },
+    fr: { title: 'La Croix', theme: 'Le Prix du Pardon', reference: 'Luc 23:32-49' },
+    es: { title: 'La Cruz', theme: 'El Precio del Perdón', reference: 'Lucas 23:32-49' }
   },
   { 
     reference: 'Lucas 24:1-12',
-    pt: { title: 'A Ressurreição', theme: 'A Morte Vencida' },
-    en: { title: 'The Resurrection', theme: 'Death Defeated' },
-    fr: { title: 'La Résurrection', theme: 'La Mort Vaincue' },
-    es: { title: 'La Resurrección', theme: 'La Muerte Vencida' }
+    pt: { title: 'A Ressurreição', theme: 'A Morte Vencida', reference: 'Lucas 24:1-12' },
+    en: { title: 'The Resurrection', theme: 'Death Defeated', reference: 'Luke 24:1-12' },
+    fr: { title: 'La Résurrection', theme: 'La Mort Vaincue', reference: 'Luc 24:1-12' },
+    es: { title: 'La Resurrección', theme: 'La Muerte Vencida', reference: 'Lucas 24:1-12' }
   },
 ];
 

@@ -19,7 +19,7 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
     
     onOpenStudy({
       title: localizedItem.title,
-      reference: item.reference,
+      reference: item.reference, // Keep ID for lookup
       theme: localizedItem.theme
     });
   };
@@ -85,7 +85,7 @@ const Scriptures: React.FC<ScripturesProps> = ({ onOpenStudy, onOpenGuide, langu
                   </div>
                   <div className="mt-3 sm:mt-0 pl-14 sm:pl-0 flex items-center gap-2 text-sm font-medium">
                        <span className="flex items-center text-teal-600 bg-teal-50 px-3 py-1 rounded-full">
-                         {item.reference} <IconArrowRight className="w-4 h-4 ml-2" />
+                         {localizedItem.reference} <IconArrowRight className="w-4 h-4 ml-2" />
                        </span>
                   </div>
                 </div>

@@ -65,6 +65,7 @@ export interface HomeContent {
 export interface LocalizedScriptureItem {
   title: string;
   theme: string;
+  reference: string; // Added for localized book names (e.g. Genèse vs Genesis)
 }
 
 export interface MultilingualScriptureItem {

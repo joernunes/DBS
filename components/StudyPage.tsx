@@ -100,6 +100,8 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
   // Dynamic lookup for title to ensure translation works
   const scriptureItem = SCRIPTURES_LIST.find(s => s.reference === study.reference);
   const currentTitle = scriptureItem ? scriptureItem[language].title : study.title;
+  // Get the localized reference string (e.g., "Genèse 1:1" instead of "Gênesis 1:1")
+  const currentReference = scriptureItem ? scriptureItem[language].reference : study.reference;
   
   // Font Size Classes
   const textSizeClass = fontSize === 'large' ? 'text-2xl md:text-3xl leading-relaxed' : 'text-xl md:text-2xl leading-loose';
@@ -168,7 +170,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
               {content.title}
             </h1>
             <p className="text-teal-700 font-sans uppercase tracking-widest text-sm font-bold">
-              {study.reference}
+              {currentReference}
             </p>
           </div>
         </header>
@@ -197,7 +199,7 @@ const StudyPage: React.FC<StudyPageProps> = ({ study, onBack, language, setLangu
                     <div className="text-center p-8 border-2 border-dashed border-gray-200 rounded-2xl bg-gray-50">
                         <IconBookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                         <h3 className="text-2xl font-bold text-gray-700 mb-4">
-                            {labels.openBible}: <span className="text-teal-600 underline">{study.reference}</span>
+                            {labels.openBible}: <span className="text-teal-600 underline">{currentReference}</span>
                         </h3>
                         <p className="text-gray-500 italic max-w-lg mx-auto">
                             {labels.readInBible}
