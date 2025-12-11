@@ -51,6 +51,7 @@ export interface HomeContent {
   welcome: string;
   meetingInfo: string;
   meetingDay: string;
+  location: string;
   confirmBtn: string;
   verseTitle: string;
   nextStudy: string;

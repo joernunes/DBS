@@ -73,19 +73,19 @@ function App() {
   useEffect(() => {
     const seoConfig = {
         pt: {
-            title: "DBS Simples | Estudo Bíblico & Comunidade",
+            title: "Semence | Estudo Bíblico & Comunidade",
             desc: "Guia prático para Pequenos Grupos, Escola Sabatina e Meditação. Conecte-se com Deus e amigos."
         },
         en: {
-            title: "Simple DBS | Bible Study & Community",
+            title: "Semence | Bible Study & Community",
             desc: "Practical guide for Small Groups, Sabbath School, and Meditation. Connect with God and friends."
         },
         fr: {
-            title: "DBS Simple | Étude Biblique & Communauté",
+            title: "Semence | Étude Biblique & Communauté",
             desc: "Guide pratique pour les Petits Groupes, l'École du Sabbat et la Méditation. Connectez-vous avec Dieu."
         },
         es: {
-            title: "DBS Simple | Estudio Bíblico y Comunidad",
+            title: "Semence | Estudio Bíblico y Comunidad",
             desc: "Guía práctica para Grupos Pequeños, Escuela Sabática y Meditación. Conéctate con Dios y amigos."
         }
     };

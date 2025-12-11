@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
               <IconBookOpen className="w-6 h-6" />
             </div>
             <span className={`font-bold text-xl ${scrolled ? 'text-gray-800' : 'text-white drop-shadow-md'}`}>
-              DBS Simples
+              Semence
             </span>
           </div>
 

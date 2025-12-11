@@ -137,7 +137,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
         </div>
 
         <div className="mt-auto pt-2 text-center text-xs text-gray-400">
-          DBS Simples v1.2
+          Semence v1.2
         </div>
       </div>
     </div>
