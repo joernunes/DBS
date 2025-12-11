@@ -459,7 +459,7 @@ const Home: React.FC<HomeProps> = ({ language, setLanguage, onNavigate }) => {
                     </div>
 
                     <a 
-                        href="https://sabbathschoolonthemove.org" 
+                        href={`https://sabbath-school.adventech.io/${language}`}
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="text-xs font-bold uppercase tracking-widest text-white border-b border-white/30 pb-1 hover:border-white transition-all inline-flex items-center gap-2"
